@@ -1,0 +1,86 @@
+@import helper._
+@import models.form.FeedbackModel
+@import views.ViewFunctions._
+
+@import scala.collection.immutable.{List => ScalaList}
+
+@(implicit form: play.data.Form[FeedbackModel])
+
+@messageErrors = @{
+    form("message").errors
+}
+
+@nameErrors = @{
+    form("name").errors
+}
+
+@emailErrors = @{
+    form("email").errors
+}
+
+@template.main(javascripts = scala.List("application/javascripts/feedback.js", "application/javascripts/close-window.js"))("view.feedback.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        @layouts.pageHeader(fragments.header.pageTitle(Messages("view.feedback.header")))
+
+        <form id="feedback-form" method="POST" action="@routes.FeedbackController.submitFeedback()" novalidate>
+            @CSRF.formField
+
+            @fragments.errorSummary(errors = ScalaList(messageErrors, nameErrors, emailErrors))
+
+            <p class="lede">
+                @Messages("view.feedback.instruction.p1")<br/>
+                @Messages("view.feedback.instruction.p2")
+            </p>
+
+            <fieldset>
+                <div class="form-group @if(!messageErrors.isEmpty) { form-group-error }">
+                    <label for="message">
+                        <span class="form-label">@Messages("view.feedback.fieldset.message")</span>
+                        <span class="error-message" id="error-message-message">
+                        @for(error <- messageErrors) {
+                            @getMessage(error)
+                        }
+                        </span>
+                    </label>
+                    <textarea class="form-control form-control-1-2" id="message" maxLength="500" rows="5" name="message" aria-describedby="error-message-message">@form("message").value</textarea>
+                    <p class="remaining-characters"><span class="character-countdown">500</span>@Messages("view.feedback.fieldset.message.remainingCharactersSuffix")</p>
+                </div>
+            </fieldset>
+
+            <p>@Messages("view.feedback.contactDetails")</p>
+
+            <fieldset>
+                <div class="form-group @if(!nameErrors.isEmpty) { form-group-error }">
+                    <label for="name">
+                        <span class="form-label">@Messages("view.feedback.fieldset.name")</span>
+                        <span class="error-message" id="error-message-name">
+                        @for(error <- nameErrors) {
+                            @getMessage(error)<br />
+                        }
+                        </span>
+                    </label>
+                    <input class="form-control form-control-1-3" id="name" autocomplete="off" type="text" name="name" value="@form("name").value" aria-describedby="error-message-name">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="form-group @if(!emailErrors.isEmpty) { form-group-error }">
+                    <label for="email">
+                        <span class="form-label">@Messages("view.feedback.fieldset.email")</span>
+                        <span class="error-message" id="error-message-email">
+                        @for(error <- emailErrors) {
+                            @getMessage(error)<br />
+                        }
+                        </span>
+                    </label>
+                    <input class="form-control form-control-1-3" id="email" autocomplete="off" type="email" name="email" value="@form("email").value" aria-describedby="error-message-email">
+                </div>
+            </fieldset>
+
+            <input class="button" type="submit" role="button" value="@Messages("view.feedback.button.submit")">
+
+        </form>
+    </main>
+}

@@ -1,0 +1,95 @@
+@import helper._
+@import models.form.PaymentReceiptModel
+@import views.ViewFunctions._
+
+@import scala.collection.immutable.{List => ScalaList}
+
+@()(implicit form: play.data.Form[PaymentReceiptModel])
+
+@emailReceiptDecisionErrors = @{
+    form("emailReceiptDecision").errors
+}
+
+@emailAddressErrors = @{
+    form("receiptEmails.email").errors
+}
+
+@confirmedEmailAddressErrors = @{
+    form("receiptEmails.repeatedEmail").errors
+}
+
+@template.main()("view.receipt.title")  {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        @fragments.backLink(routes.ApplicationController.displayPenaltySummaryPage())
+
+        @layouts.pageHeader(headerContent = fragments.header.pageTitle(Messages("view.receipt.header")))
+
+        <script type="text/javascript"> cmCreatePageviewTag("DO YOU WANT AN E-MAIL RECEIPT?","OEPP"); </script>
+
+        <form method="POST" action="@routes.ApplicationController.onReceiptSelection()" novalidate>
+            @CSRF.formField
+
+            @fragments.errorSummary(ScalaList(emailReceiptDecisionErrors, emailAddressErrors, confirmedEmailAddressErrors))
+
+            <div class="form-group @if(!emailReceiptDecisionErrors.isEmpty) { form-group-error }">
+                <fieldset class="inline">
+                    <legend class="visuallyhidden" id="example-personal-details">@Messages("view.receipt.fieldset.emailReceiptDecision.accessibilityHint")</legend>
+                    <div class="form-group-compound">
+                        <span class="error-message">
+                        @for(error <- emailReceiptDecisionErrors) {
+                            @getMessage(error)<br />
+                        }
+                        </span>
+                        <div class="multiple-choice" data-target="email-address">
+                            <input tabindex="1" id="emailReceiptDecision" type="radio" name="emailReceiptDecision" value="true" @if(form("emailReceiptDecision").value == "true") { checked="checked" }>
+                            <label class="block-label" for="emailReceiptDecision">
+                                @Messages("view.receipt.fieldset.emailReceiptDecision.yesOption")
+                            </label>
+                       </div>
+                       <div class="multiple-choice">
+                            <input tabindex="2" id="emailReceiptDecision-2" type="radio" name="emailReceiptDecision" value="false" @if(form("emailReceiptDecision").value == "false") { checked="checked" }>
+                            <label class="block-label" for="emailReceiptDecision-2">
+                                @Messages("view.receipt.fieldset.emailReceiptDecision.noOption")
+                            </label>
+                        </div>
+                    </div>
+                    <div class="panel panel-border-narrow js-hidden" id="email-address">
+                        <fieldset>
+                            <legend class="visuallyhidden">@Messages("view.receipt.fieldset.emailAddress.accessibilityHint")</legend>
+                            <p class="text">@Messages("view.receipt.fieldset.emailAddress.p1")</p>
+                            <div class="form-group @if(!emailAddressErrors.isEmpty) { form-group-error }">
+                                <label for="receiptEmails.email">
+                                    <span class="form-label-bold">@Messages("view.receipt.fieldset.emailAddress")</span>
+                                    <span class="error-message" id="error-message-email-address">
+                                    @for(error <- emailAddressErrors) {
+                                        @getMessage(error)<br />
+                                    }
+                                    </span>
+                                </label>
+                                <input tabindex="3" class="form-control" autocomplete="off" id="receiptEmails.email" type="email" name="receiptEmails.email" value="@form("receiptEmails.email").value" aria-describedby="error-message-email-address">
+                            </div>
+                            <div class="form-group @if(!confirmedEmailAddressErrors.isEmpty) { form-group-error }">
+                                <label for="receiptEmails.repeatedEmail">
+                                    <span class="form-label-bold">@Messages("view.receipt.fieldset.repeatedEmailAddress")</span>
+                                    <span class="error-message" id="error-message-confirmed-email-address">
+                                    @for(error <- confirmedEmailAddressErrors) {
+                                        @getMessage(error)<br />
+                                    }
+                                    </span>
+                                </label>
+                                <input tabindex="4" class="form-control" autocomplete="off" id="receiptEmails.repeatedEmail" type="email" name="receiptEmails.repeatedEmail" value="@form("receiptEmails.repeatedEmail").value" aria-describedby="error-message-confirmed-email-address">
+                            </div>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+
+            <p class="additional-info">@Messages("view.receipt.printOption")</p>
+
+            <input tabindex="5" class="button spacer" type="submit" value= "@Messages("view.receipt.button.continue")">
+        </form>
+
+    </main>
+}

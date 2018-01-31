@@ -1,0 +1,33 @@
+@import java.util.Date
+@import utils.Formatter
+@import views.ViewFunctions._
+
+@(lockedDate: Date, lockoutTime: Long)
+
+@content = {
+
+
+            <p>@Messages("view.penaltyDetailsLocked.recordLocked.p1", lockoutTime)</p>
+            @if(lockedDate != null) {
+                <p>@Messages("view.penaltyDetailsLocked.recordLocked.p2", Formatter.formatTimeAmPm(lockedDate, userLocale)) @Messages("view.penaltyDetailsLocked.time")
+                   @Formatter.formatDate(lockedDate, userLocale)</p>
+            }
+
+            <p>@Messages("view.penaltyDetailsLocked.helpContact")</p>
+            <p>@Messages("view.penaltyDetailsLocked.alternativePayment")</p>
+            <p class="heading-medium">@Messages("view.penaltyDetailsLocked.otherWaysToPay")</p>
+
+
+        @fragments.otherWaysToPay()
+
+
+        <a href="https://www.gov.uk" class="button spacer-large" role="button" tabindex="6">@Messages("view.penaltyDetailsLocked.button.exit")</a></p>
+
+
+}
+
+@layouts.errorPage(
+Messages("view.penaltyDetailsLocked.header"),
+content
+
+)

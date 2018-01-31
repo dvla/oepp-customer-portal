@@ -1,0 +1,14 @@
+@()
+
+@content = {
+
+<p> @Messages("view.vehicleRegistrationMarkMismatch.p1")</p>
+
+<a href="@routes.ApplicationController.displaySearchCaseForm()" class="button" role="button">@Messages("view.vehicleRegistrationMarkMismatch.button.tryAgain")</a>
+
+}
+
+@layouts.errorPage(
+Messages("view.vehicleRegistrationMarkMismatch.header"),
+content
+)

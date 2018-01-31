@@ -1,0 +1,7 @@
+{
+  "status": 404,
+  "error": {
+    "code": "OE-404-01",
+    "message": "No case can be found"
+  }
+}

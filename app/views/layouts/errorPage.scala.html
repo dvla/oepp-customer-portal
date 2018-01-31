@@ -1,0 +1,21 @@
+@(title: String, content: Html = HtmlFormat.empty)
+
+@pageTitle = {
+    <div class="hgroup error-box-highlight">
+        <h1 class="bold-large">@Html(title)</h1>
+    </div>
+}
+
+@template.main()("error.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+                @layouts.pageHeader(pageTitle)
+
+                @content
+            </div>
+        </div>
+    </main>
+}

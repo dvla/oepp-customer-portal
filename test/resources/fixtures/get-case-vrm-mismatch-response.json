@@ -1,0 +1,7 @@
+{
+  "status": 404,
+  "error": {
+    "code": "OE-404-02",
+    "message": "The VRM does not match on our records"
+  }
+}

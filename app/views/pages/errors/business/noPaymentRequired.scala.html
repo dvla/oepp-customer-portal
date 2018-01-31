@@ -1,0 +1,22 @@
+@import uk.gov.dvla.domain.Offence
+@import views.template.Stylesheet
+
+@(criteria: Offence.Criteria)
+
+@content = {
+
+<p class="bold-medium">@Messages("view.noPaymentRequired.subHeader")</p>
+
+@fragments.offenceCriteriaTable(criteria, false)
+
+<p>@Html(Messages("view.noPaymentRequired.printPage"))</p>
+
+
+<p><a href="https://www.gov.uk" class="button spacer" role="button" tabindex="6">@Messages("view.noPaymentRequired.button.exit")</a></p>
+}
+
+
+@layouts.errorPage(
+Messages("view.noPaymentRequired.header"),
+content
+)

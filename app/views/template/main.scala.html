@@ -1,0 +1,137 @@
+@import views.template.Stylesheet
+
+@(stylesheets: List[Stylesheet] = Nil, javascripts: List[String] = Nil)(title:String)(content: Html)
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+
+        <meta name="robots" content="noindex, nofollow, noodp, noydir">
+        <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+
+        <title>@Messages(title)</title>
+
+        <!--[if gt IE 8]><!--><link href="@routes.Assets.versioned("template/stylesheets/govuk-template.css")" media="screen" rel="stylesheet" type="text/css" /><!--<![endif]-->
+        <!--[if IE 6]><link href="@routes.Assets.versioned("template/stylesheets/govuk-template-ie6.css")" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+        <!--[if IE 7]><link href="@routes.Assets.versioned("template/stylesheets/govuk-template-ie7.css")" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+        <!--[if IE 8]><link href="@routes.Assets.versioned("template/stylesheets/govuk-template-ie8.css")" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+
+        <!--[if gt IE 8]><!--><link href="@routes.Assets.versioned("elements/stylesheets/govuk-elements-styles.css")" rel="stylesheet" type="text/css"><!--<![endif]-->
+        <!--[if IE 6]><link href="@routes.Assets.versioned("elements/stylesheets/govuk-elements-styles-ie6.css")" rel="stylesheet" type="text/css" /><![endif]-->
+        <!--[if IE 7]><link href="@routes.Assets.versioned("elements/stylesheets/govuk-elements-styles-ie7.css")" rel="stylesheet" type="text/css" /><![endif]-->
+        <!--[if IE 8]><link href="@routes.Assets.versioned("elements/stylesheets/govuk-elements-styles-ie8.css")" rel="stylesheet" type="text/css" /><![endif]-->
+
+        <link href="@routes.Assets.versioned("template/stylesheets/govuk-template-print.css")" media="print" rel="stylesheet" type="text/css" />
+
+    <!--[if IE 8]><link href="@routes.Assets.versioned("template/stylesheets/fonts-ie8.css")" media="all" rel="stylesheet" /><![endif]-->
+    <!--[if gte IE 9]><!--><link href="@routes.Assets.versioned("template/stylesheets/fonts.css")" media="all" rel="stylesheet" /><!--<![endif]-->
+    <!--[if lt IE 9]><script src="@routes.Assets.versioned("template/javascripts/ie.js")"></script><![endif]-->
+
+        <link href="@routes.Assets.versioned("application/stylesheets/main.css")" rel="stylesheet" type="text/css" />
+
+        @for(stylesheet <- stylesheets) {
+            <link href="@routes.Assets.versioned(stylesheet.path)" media="@stylesheet.media" rel="stylesheet" type="text/css" />
+        }
+
+        <link rel="shortcut icon" href="@routes.Assets.versioned("template/images/favicon.ico")" type="image/x-icon" />
+
+        <link rel="mask-icon" href="@routes.Assets.versioned("template/images/gov.uk_logotype_crown.svg")" color="#0b0c0c">
+        <link rel="apple-touch-icon" sizes="180x180" href="@routes.Assets.versioned("template/images/apple-touch-icon-180x180.png")">
+        <link rel="apple-touch-icon" sizes="167x167" href="@routes.Assets.versioned("template/images/apple-touch-icon-167x167.png")">
+        <link rel="apple-touch-icon" sizes="152x152" href="@routes.Assets.versioned("template/images/apple-touch-icon-152x152.png")">
+        <link rel="apple-touch-icon" href="@routes.Assets.versioned("template/images/apple-touch-icon.png")">
+
+        <meta name="theme-color" content="#0b0c0c" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:image" content="@routes.Assets.versioned("template/images/opengraph-image.png")">
+
+        @fragments.tracking.analytics()
+
+        <!-- for some reason this stops page break after header in ubuntu firefox print -->
+        <p class="visible-for-print-block"> </p>
+
+    </head>
+
+    <body>
+        <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+        <div id="skiplink-container">
+            <div>
+                <a href="#content" class="skiplink">@Messages("application.skipToMain")</a>
+            </div>
+        </div>
+
+        <div id="global-cookie-message">
+            <p>@Html(Messages("application.cookieMessage", routes.ApplicationController.displayCookies()))</p>
+        </div><!--end global-cookie-message-->
+
+        <header role="banner" id="global-header" class="with-proposition">
+            <div class="header-wrapper">
+                <div class="header-global">
+                    <div class="header-logo">
+                        <a href="https://www.gov.uk/" title="@Messages("application.goToGovUK")" id="logo" class="content">
+                            <img src="@routes.Assets.versioned("template/images/gov.uk_logotype_crown_invert_trans.png")" width="35" height="31" alt="@Messages("application.image.logo.alt")"> GOV.UK
+                        </a>
+                    </div>
+                </div>
+                <div class="header-proposition">
+                    <div class="content">
+                        <a href="@routes.ApplicationController.redirectToStartPage()" id="proposition-name">@Messages("application.header")</a>
+                    </div>
+                </div>
+            </div>
+        </header><!--end header-->
+
+        <div id="global-header-bar"></div><!--end global-header-bar-->
+
+        @content
+
+        <footer class="group js-footer" id="footer" role="contentinfo">
+            <div class="footer-wrapper">
+                <div class="footer-meta">
+                    <div class="footer-meta-inner">
+                        <h2 class="visuallyhidden">@Messages("view.footer.support")</h2>
+                        <ul>
+                            <li>@Html(Messages("view.footer.cookiesLink", routes.ApplicationController.displayCookies()))</li>
+                            <li>@Html(Messages("view.footer.termsAndConditionsLink", routes.ApplicationController.displayTermsAndConditions()))</li>
+                            @fragments.languageLink()
+                            <li>@Html(Messages("view.footer.builtBy"))</li>
+                        </ul>
+                        <div class="open-government-licence">
+                            <p class="logo">@Html(Messages("view.footer.licence.p1"))</p>
+                            <p>@Html(Messages("view.footer.licence.p2"))</p>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        @Html(Messages("view.footer.crownCopyright"))
+                    </div>
+                </div>
+            </div>
+        </footer><!--end footer-->
+
+        <div id="global-app-error" class="app-error hidden"></div>
+
+        <script src="@routes.Assets.versioned("template/javascripts/govuk-template.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("elements/javascripts/vendor/jquery-1.11.0.min.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("toolkit/javascripts/vendor/polyfills/bind.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("toolkit/javascripts/govuk/shim-links-with-button-role.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("toolkit/javascripts/govuk/show-hide-content.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("elements/javascripts/govuk/details.polyfill.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("elements/javascripts/application.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("application/javascripts/vendor/jquery.prevent-double-submit.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("application/javascripts/prevent-double-submit.js")" type="text/javascript"></script>
+
+        @for(javascript <- javascripts) {
+            <script src="@routes.Assets.versioned(javascript)" type="text/javascript"></script>
+        }
+
+        <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');</script>
+    </body>
+</html>

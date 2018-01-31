@@ -1,0 +1,16 @@
+@()
+
+@content = {
+
+<p>@Messages("view.pageNotFound.p1")</p>
+
+<p><a href="@routes.ApplicationController.redirectToStartPage()">@Messages("view.pageNotFound.tryAgain")</a></p>
+
+<p><a href="https://www.gov.uk" class="button spacer" role="button">@Messages("view.pageNotFound.button.exit")</a></p>
+
+}
+
+@layouts.errorPage(
+Messages("view.pageNotFound.header"),
+content
+)

@@ -1,0 +1,8 @@
+@(title: String, subtitle: Option[String] = None)
+
+<div class="hgroup">
+    <h1 class="heading-xlarge">@title</h1>
+    @if(subtitle.isDefined) {
+        <h2 class="subtitle">@subtitle.get</h2>
+    }
+</div>

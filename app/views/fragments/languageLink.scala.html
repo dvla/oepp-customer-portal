@@ -1,0 +1,7 @@
+@()(implicit lang: play.api.i18n.Lang, requestHeader: play.api.mvc.RequestHeader)
+
+@alternativeLanguage = @{
+    if(lang.language == "en") {"cy"} else {"en"}
+}
+
+<li><a href="@routes.InternationalizationController.changeLanguage(alternativeLanguage, requestHeader.uri.substring(1))">@Messages("view.footer.languageLink.text")</a></li>

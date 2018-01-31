@@ -1,0 +1,22 @@
+@import views.template.Stylesheet
+
+
+
+@content = {
+<main id="content" role="main">
+
+        <p>@Messages("view.paymentError.p1")</p>
+        <p>@Messages("view.paymentError.p2")</p>
+
+
+    <a href="@routes.ApplicationController.displaySearchCaseForm()" class="button spacer" role="button">@Messages("view.paymentError.button.tryAgain")</a>
+</main>
+
+
+}
+
+
+@layouts.errorPage(
+Messages("view.paymentError.header"),
+content
+)

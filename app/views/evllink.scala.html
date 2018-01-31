@@ -1,0 +1,28 @@
+@import views.ViewFunctions._
+@import helper._
+@import views.models.EVLView
+
+@(evl: EVLView)
+@template.main(javascripts = scala.List("application/javascripts/evl-link.js"))("view.evllink.title")  {
+<main id="content" role="main">
+    <div class="what-to-do-next">
+        <form id="evlLink" action="@evl.getLink" method="post" target="_self">
+            @for((k, v) <- evl.getFields) {
+            <input type="hidden" name="@k" value="@v" />
+            }
+
+            <h1 class="heading-large">@Html(Messages("view.evllink.loading.heading"))</h1>
+            <div><p>@Html(Messages("view.evllink.loading.p1"))</p></div>
+            <input tabindex="1" class="button spacer" type="submit" value="@Messages("view.evllink.button")">
+
+            <br /><br />
+            <details class="text where-to-find">
+                <summary><span class="summary">@Messages("view.evllink.whyLink")</span></summary>
+                <div class="panel panel-border-narrow" id="details-content-1">
+                    <p>@Messages("view.evllink.whyReason")</p>
+                </div>
+            </details>
+        </form>
+    </div>
+</main>
+}

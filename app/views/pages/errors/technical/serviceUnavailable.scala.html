@@ -1,0 +1,15 @@
+@()
+
+@content = {
+
+<p>@Messages("view.serviceUnavailable.p1")</p>
+<p>@Messages("view.serviceUnavailable.p2")</p>
+
+<a href="@routes.ApplicationController.displaySearchCaseForm()" class="button" role="button">@Messages("view.serviceUnavailable.button.tryAgain")</a>
+
+}
+
+@layouts.errorPage(
+Messages("view.serviceUnavailable.header"),
+content
+)

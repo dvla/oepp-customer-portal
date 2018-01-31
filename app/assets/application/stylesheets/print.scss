@@ -1,0 +1,81 @@
+.highlighted-event {
+  h1, h2, p, span {
+    color: #000;
+  }
+}
+
+.highlighted-event.success {
+  background-color:white
+}
+
+.colmask.doublepage {
+  .highlighted-event {
+    text-align: left;
+
+    h1, h2, p, span, details, summary, a {
+      color: #000;
+    }
+
+    .heading-medium {
+      margin: 0;
+    }
+
+    h1.heading-medium, h2.heading-small {
+      font-size: 24px;
+      margin: 0;
+    }
+
+  }
+
+  .highlighted-event.success, .highlighted-event .success,
+  .highlighted-event.danger, .highlighted-event .danger {
+    background-color: white;
+  }
+
+  .highlighted-event.danger {
+    padding-bottom: 25px;
+  }
+
+}
+
+.phase-banner, .button, #content > p, .recently-taxed {
+  display: none;
+}
+
+.icon-important {
+    overflow: hidden;
+    display: none;
+}
+
+button,
+.button {
+    display: none !important;
+}
+
+/* No pattern required as footer is removed */
+#content {
+  padding-bottom: 0;
+}
+
+// background images not printed by default, so hide the icon
+// and replace with an image (which should have class "print-only")
+
+.visible-for-print-inline {
+   display: inline;
+}
+
+.visible-for-print-block {
+   display: block;
+}
+
+.group:before,
+.group:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+
+.group:after {
+  clear: both;
+}

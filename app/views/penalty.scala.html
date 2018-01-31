@@ -1,0 +1,186 @@
+@import helper._
+@import uk.gov.dvla.domain.Offence
+@import models.form.PenaltyModel
+@import utils.Formatter
+@import java.math.BigDecimal
+@import views.ViewFunctions._
+@import views.VRM
+
+@(offence: Offence)(implicit form: play.data.Form[PenaltyModel])
+
+@untaxedVehicleAcknowledgedErrors = @{
+    form("untaxedVehicleAcknowledged").errors
+}
+
+@offence7A = {
+    <li>
+        <span>
+            <span>@Messages("view.penalty.calculation.penaltyAmount.heading")</span>
+            @if(offence.getCaseData.get.getElevatedPenaltyAmount.isPresent) {
+                <span class="form-hint">@Messages("view.penalty.calculation.penaltyAmount.hint", Formatter.formatMoney(offence.getCaseData.get.getElevatedPenaltyAmount.get))</span>
+            }
+        </span>
+        <span class="bold">
+            @Formatter.formatMoney(offence.getCaseData.get.getPenaltyAmount)
+        </span>
+    </li>
+    <li>
+        <span>
+            <span>@Messages("view.penalty.calculation.taxOwed.heading")</span>
+            @if(offence.getCaseData.get.getArrearsAmount.compareTo(BigDecimal.ZERO) > 0) {
+                <span class="form-hint">@Html(Messages("view.penalty.calculation.taxOwed.hint", Formatter.formatDate(offence.getCaseData.get.getArrearsInterval.getStart.toDate, userLocale), Formatter.formatDate(offence.getCaseData.get.getArrearsInterval.getEnd.toDate, userLocale)))</span>
+            }
+        </span>
+        <span class="bold">
+            @Formatter.formatMoney(offence.getCaseData.get.getArrearsAmount)
+        </span>
+    </li>
+    <li>
+        <span class="bold">@Messages("view.penalty.calculation.totalCurrentlyOwed")</span>
+        <span class="bold">
+            @Formatter.formatMoney(offence.getCaseData.get.getPaymentAmount)
+        </span>
+    </li>
+}
+
+@offence29 = {
+    <li>
+        <span>@Messages("view.penalty.ocs")</span>
+        <span class="bold">
+            @Formatter.formatMoney(offence.getCaseData.get.getArrearsAmount)
+        </span>
+    </li>
+    @if(offence.getCaseData.get.gets11Case == "Y"){
+        <li>
+            <span>@Messages("view.penalty.hgvLevy")</span>
+            <span class="bold">
+                <span>@Formatter.formatMoney(offence.getCaseData.get.getHgvAmount)</span>
+            </span>
+        </li>
+    }
+    <li>
+        <span class="bold">@Messages("view.penalty.calculation.totalOwed")</span>
+         <span class="bold">
+            @Formatter.formatMoney(offence.getCaseData.get.getPaymentAmount)
+        </span>
+    </li>
+}
+
+@offence144A = {
+    <li>
+        <span>
+            <span>@Messages("view.penalty.penaltyFailingToInsure")</span>
+            @if(offence.getCaseData.get.getElevatedPenaltyAmount.isPresent) {
+            <span class="form-hint">@Messages("view.penalty.cie.increased.amount.message", Formatter.formatMoney(offence.getCaseData.get.getElevatedPenaltyAmount.get))</span>
+            }
+        </span>
+
+        <span class="bold">
+                @Formatter.formatMoney(offence.getCaseData.get.getPenaltyAmount)
+            </span>
+
+    </li>
+    <li>
+        <span class="bold">@Messages("view.penalty.calculation.totalCurrentlyOwed")</span>
+            <span class="bold">
+                @Formatter.formatMoney(offence.getCaseData.get.getPaymentAmount)
+            </span>
+    </li>
+}
+
+@taxWarning = {
+    <li>
+        <span>
+            <span class="bold highlighted-event danger">@Messages("view.penalty.vehicleTaxStatus.warning")</span>
+        </span>
+        <div class="amount">
+            @Messages("view.penalty.vehicleTaxStatus.taxStartDate", Formatter.formatDate(offence.getVehicleData.getNewTaxStartDate.get.toDate, userLocale))
+            <details class="recently-taxed">
+                <summary><span class="summary">@Messages("view.penalty.vehicleTaxStatus.recentlyPaid")</span></summary>
+                <div class="panel panel-border-narrow">
+                    @Html(Messages("view.penalty.vehicleTaxStatus.recentlyPaid.p1"))
+                </div>
+            </details>
+        </div>
+    </li>
+}
+
+@taxDeclaration = {
+    <div class="text analytics-load-event-trigger" data-event-label="@{if (untaxedVehicleAcknowledgedErrors.isEmpty) {"Tax warning displayed on penalty summary page"} else {"Tax declaration box not ticked on penalty summary page"}}">
+        <h2 class="heading-small">@Messages("view.penalty.fieldset.untaxedVehicleAcknowledged")</h2>
+        @if(offence.getCaseData.get.getCaseType == "144A") {
+            <p>@Messages("view.penalty.fieldset.untaxedVehicleAcknowledged.cie.p1")</p>
+        } else {
+            <p>@Messages("view.penalty.fieldset.untaxedVehicleAcknowledged.p1")</p>
+        }
+        <fieldset>
+            <legend class="visuallyhidden">
+                @Messages("view.penalty.fieldset.untaxedVehicleAcknowledged")
+            </legend>
+            <div class="form-group text @if(!untaxedVehicleAcknowledgedErrors.isEmpty) { form-group-error }">
+                <span class="error-message" id="error-message-untaxedVehicleAcknowledged">
+                @for(error <- untaxedVehicleAcknowledgedErrors) {
+                    @getMessage(error)<br />
+                }
+                </span>
+                <div class="multiple-choice">
+                    <input id="untaxedVehicleAcknowledged" name="untaxedVehicleAcknowledged" type="checkbox" @if(form("untaxedVehicleAcknowledged").value) { checked="checked" } aria-describedby="error-message-untaxedVehicleAcknowledged">
+                    <label for="untaxedVehicleAcknowledged">@Messages("view.penalty.fieldset.untaxedVehicleAcknowledged.tick")</label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+}
+
+@template.main(javascripts = scala.List("application/javascripts/analytics-send-custom-event.js"))("view.penalty.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        @fragments.backLink(routes.ApplicationController.displaySearchCaseForm())
+
+        @layouts.pageHeader(headerContent = fragments.header.pageTitle(Messages("view.penalty.header")))
+
+        <form method="POST" action="@routes.ApplicationController.onPenaltyAcceptance()">
+            @CSRF.formField
+
+            @fragments.errorSummary(scala.List(untaxedVehicleAcknowledgedErrors))
+
+            <ul class="ul-data">
+                <li>
+                    <span>@Messages("view.penalty.penaltyReference")</span>
+                    <span class="bold">@offence.getCriteria.getCaseNumber.toString()</span>
+                </li>
+                <li>
+                    <span>@Messages("view.penalty.vehicleRegistrationNumber.heading")</span>
+                    <span class="bold">@VRM.format(offence.getCriteria.getVehicleRegistrationMark)</span>
+                </li>
+
+                @if(offence.getCaseData.get.getCaseType == "7A") {
+                    @offence7A
+                } else {
+                    @if(offence.getCaseData.get.getCaseType == "144A"){
+                        @offence144A
+                    }  else {
+                        @offence29
+                    }
+                }
+
+                @if(!offence.getVehicleData.isTaxed && offence.getCaseData.get.getCaseType != "144A"){
+                    @taxWarning
+                }
+            </ul>
+
+            @if(!offence.getVehicleData.isTaxed) {
+                <script type="text/javascript"> cmCreatePageviewTag("HOW THIS PAYMENT IS CALCULATED UNTAXED","OEPP"); cmCreateRegistrationTag("@offence.getCriteria.getCaseNumber");</script>
+                @taxDeclaration
+            }else {
+                <script type="text/javascript"> cmCreatePageviewTag("HOW THIS PAYMENT IS CALCULATED","OEPP"); cmCreateRegistrationTag("@offence.getCriteria.getCaseNumber");</script>
+                @if(offence.getCaseData.get.getCaseType == "144A"){
+                    @taxDeclaration
+                }
+            }
+
+            <input class="button spacer" type="submit" value=@Messages("view.penalty.button.continue")>
+        </form>
+    </main>
+}

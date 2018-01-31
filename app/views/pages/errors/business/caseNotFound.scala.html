@@ -1,0 +1,17 @@
+@()
+
+@content = {
+
+<div class="text">
+    <p>@Messages("view.caseNotFound.p1")</p>
+    <p>@Messages("view.caseNotFound.p2")</p>
+</div>
+
+<a href="@routes.ApplicationController.displaySearchCaseForm()" class="button" role="button">@Messages("view.vehicleRegistrationMarkMismatch.button.tryAgain")</a>
+
+}
+
+@layouts.errorPage(
+Messages("view.caseNotFound.header"),
+content
+)

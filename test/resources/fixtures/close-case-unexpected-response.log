@@ -1,0 +1,1 @@
+Offence case 55555555 closure failed because unexpected response has been received (status: 404, response body: ) - reconcile manually {"paymentID":1,"paidPenaltyAmount":40,"paidArrearsAmount":21,"payableArrearsAmount":24,"voluntaryArrearsPaid":12,"arrearsTo":"2016-08-30"}

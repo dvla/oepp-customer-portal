@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "caseNumber": "33333333",
+    "vehicleRegistrationMark": "CV03AAA"
+  },
+  "caseRejection": {
+    "rejectionReason": "NO_PAYMENT_REQUIRED",
+    "caseClosureDate": "2015-07-30T23:00:00.000Z"
+  },
+  "vehicleData": {
+    "taxed": true
+  }
+}

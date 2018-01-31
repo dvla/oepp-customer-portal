@@ -1,0 +1,20 @@
+@import play.data.validation.ValidationError
+@import views.ViewFunctions._
+
+@(errors: scala.List[java.util.List[ValidationError]], body: String = "")
+
+@if(errors.flatten.nonEmpty) {
+    <!-- Error message block START -->
+    <div class="error-summary" role="group" aria-labelledby="error-summary-heading">
+        <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
+            @Messages("fragment.errorSummary.header")
+        </h1>
+        <p>@body</p>
+        <p>@Messages("fragment.errorSummary.youmust")</p>
+        <ul class="error-summary-list">
+        @for(error <- errors.flatten) {
+            <li><a href="#@error.key">@getMessage(error)</a></li>
+        }
+        </ul>
+    </div><!-- Error message block END -->
+}

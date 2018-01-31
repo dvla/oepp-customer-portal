@@ -1,0 +1,47 @@
+@import java.net.URL
+
+@(secureCardPaymentFormURL: URL, receiptRequested: Boolean)
+
+@template.main(javascripts = scala.List("application/javascripts/analytics-send-custom-event.js", "application/javascripts/payment-frame.js"))("view.payment.title")  {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+
+                @fragments.backLink(routes.ApplicationController.displayReceiptSelectionForm())
+
+                @layouts.pageHeader(headerContent = fragments.header.pageTitle(Messages("view.payment.header")))
+
+                <h2><p class="bold-medium">@Messages("view.payment.paymentMethod.heading")</p></h2>
+
+                <img alt="" src="@routes.Assets.versioned("application/images/cards-visa-vdebit-master-maestro.png")" width="216" height="32" />
+
+                <p>@Html(Messages("view.payment.paymentMethod.p1"))</p>
+
+                <script type="text/javascript"> cmCreatePageviewTag("ENTER PAYMENT DETAILS","OEPP"); </script>
+
+            </div>
+        </div>
+        <iframe id="paymentFrame" title="Payment details" lang="en" class="frame-highlight"
+            src="@secureCardPaymentFormURL"
+            frameborder="0" @* Logic group recommends this field *@
+            <!--[if IE] allowTransparency="true" --> @* Logic group recommends this field. This IE-specific attribute, which has never been part of a recognised standard, is no longer present in HTML5. http://help.simplytestable.com/errors/html-validation/the-x-attribute-on-the-y-element-is-obsolete-use-css-instead/the-allowtransparency-attribute-on-the-iframe-element-is-obsolete-use-css-instead/ *@
+        >
+            <p>@Messages("view.payment.frameNotSupportedInfo")</p>
+        </iframe>
+        <div class="grid-row">
+            <div class="column-two-thirds">
+
+                <p>@Html(Messages("view.payment.paymentInfo.p1"))</p>
+
+                <p><a href="@routes.ApplicationController.displayPenaltySummaryPage()">@Messages("view.payment.paymentInfo.p2")</a></p>
+
+                @if(receiptRequested) {
+                    <span class="analytics-load-event-trigger" data-event-label="Email supplied"></span>
+                }
+
+            </div>
+        </div>
+    </main>
+}

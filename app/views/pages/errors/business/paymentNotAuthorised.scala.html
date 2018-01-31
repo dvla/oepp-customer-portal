@@ -1,0 +1,20 @@
+@import helper._
+
+@()
+
+@content = {
+
+    <p>@Messages("view.paymentNotAuthorised.p1")</p>
+    <p>@Messages("view.paymentNotAuthorised.p2")</p>
+    <p>@Messages("view.paymentNotAuthorised.p3")</p>
+
+<form method="POST" action="@routes.ApplicationController.initPayment()">
+    @CSRF.formField
+    <input tabindex="1" class="button spacer" type="submit" value="@Messages("view.paymentNotAuthorised.button.tryAgain")">
+</form>
+}
+
+@layouts.errorPage(
+Messages("view.paymentNotAuthorised.header"),
+content
+)

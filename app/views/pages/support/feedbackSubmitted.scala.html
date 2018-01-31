@@ -1,0 +1,14 @@
+@()
+
+@template.main(javascripts = scala.List("application/javascripts/feedback.js", "application/javascripts/close-window.js"))("view.feedbackSubmitted.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        @layouts.pageHeader(fragments.header.pageTitle(Messages("view.feedbackSubmitted.header")))
+
+        <p>@Messages("view.feedbackSubmitted.p1")</p>
+
+        <p><a href="https://www.gov.uk" class="button spacer-large" role="button">@Messages("view.feedback.button.finish")</a></p>
+
+    </main>
+}

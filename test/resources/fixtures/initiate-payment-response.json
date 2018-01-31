@@ -1,0 +1,5 @@
+{
+  "paymentID": 100,
+  "paymentReference": "f9c9704a-83ef-471b-8f12-91a923afd3aa",
+  "paymentPageUrl": "http://localhost/secure-payment-form"
+}

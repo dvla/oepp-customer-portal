@@ -1,0 +1,13 @@
+@()
+
+@content = {
+
+<p>@Messages("view.feedbackNotSubmitted.p1")</p>
+
+<a href="https://www.gov.uk" class="button spacer" role="button">@Messages("view.feedbackNotSubmitted.button.exit")</a>
+}
+
+@layouts.errorPage(
+Messages("view.feedbackNotSubmitted.header"),
+content
+)

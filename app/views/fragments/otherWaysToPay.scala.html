@@ -1,0 +1,20 @@
+@()
+
+<div class="text">
+    <h3 class="heading-small">@Messages("fragment.otherWaysToPay.telephone.heading")</h3>
+    <ul>
+    <li>@Messages("fragment.otherWaysToPay.telephone.numbers")</li>
+    <li>@Messages("fragment.otherWaysToPay.telephone.openingTimes")</li>
+    <li><a href="https://www.gov.uk/call-charges" rel="noopener" target="_blank">@Messages("common.callChargesLink")<span class="visuallyhidden"> (link opens in a new tab)</span></a></li>
+    </ul>
+
+    <h3 class="heading-small">@Messages("fragment.otherWaysToPay.post.heading")</h3>
+    <p>@Messages("fragment.otherWaysToPay.post.intro")</p>
+    <address>
+        @Html(Messages("fragment.otherWaysToPay.post.agencyName"))<br/>
+        D12<br/>
+        Longview Road<br/>
+        @Messages("fragment.otherWaysToPay.post.agencyTown")<br/>
+        SA99 1AH
+    </address>
+</div>

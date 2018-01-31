@@ -1,0 +1,7 @@
+{
+  "status": 404,
+  "error": {
+    "code": "OE-404-03",
+    "message": "The case type is not supported"
+  }
+}

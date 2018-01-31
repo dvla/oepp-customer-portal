@@ -1,0 +1,113 @@
+@()
+@import helper._
+
+@template.main(javascripts = scala.List("application/javascripts/close-window.js"))("view.ibmDigitalAnalytics.title"){
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        <a href="#" class="link-back close-window-trigger">@Messages("view.ibmDigitalAnalytics.exitPage")</a>
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+
+                @layouts.pageHeader(fragments.header.pageTitle(Messages("view.ibmDigitalAnalytics.header")))
+
+                <p>@Messages("view.ibmDigitalAnalytics.description")</p>
+
+
+<script type="text/javascript">
+
+var currentStatus = cI("CMOptout");
+
+if (!currentStatus) {
+        currentStatus = "opt-in";
+}
+
+function determineOptOut(){
+var radios = document.getElementsByName('optDecide');
+
+for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+        // do whatever you want with the checked radio
+        setOptOut(radios[i].value);
+
+        // only one radio can be logically checked, don't check the rest
+        break;
+    }
+}
+
+
+}
+
+function setOptOut(value) {
+        var futureDate = new Date();
+        futureDate.setFullYear(futureDate.getFullYear() + 20);
+        document.cookie = "CMOptout=" + value + "; path=/;" + " expires=" + futureDate.toGMTString();
+// example of setting cookie domain to 2nd level so opt-out is effective for .thesite.com and all subdomains.
+// document.cookie = "CMOptout=" + value "; path=/; domain=.thesite.com" + "; expires= + futureDate.toGMTString();
+        currentStatus = cI("CMOptout");
+        if (!currentStatus) {
+               currentStatus = "opt-in";
+        }
+
+}
+
+function getOptOutMessage(status)
+{
+    var msg = "";
+    if (status == "anonymous") {
+        msg = "@Messages("view.ibmDigitalAnalytics.groupAnonymous")";
+     } else if (status == "opt_out"){
+        msg = "@Messages("view.ibmDigitalAnalytics.optOut")";
+    } else {
+        msg = "@Messages("view.ibmDigitalAnalytics.individualAnonymous")";
+    }
+    return msg;
+}
+
+</script>
+
+<div id="customerServ-header">
+    <h2 class="heading-medium">@Messages("view.ibmDigitalAnalytics.statisticsSettings.header")</h2>
+
+    <div class="panel">
+        <p id="statusMessage"></p>
+    </div>
+</div>
+
+<form method="POST" action="@routes.ApplicationController.onOptSelection()">
+    @CSRF.formField
+
+    <div class="form-group">
+        <fieldset>
+            <legend>
+                <p>@Messages("view.ibmDigitalAnalytics.instructions")</p>
+            </legend>
+
+            <div class="multiple-choice">
+                <input tabindex="1" id="optIn" type="radio" name="optDecide" value=" ">
+                <label for="optIn">@Messages("view.ibmDigitalAnalytics.individualAnonymous")</label>
+            </div>
+            <div class="multiple-choice">
+                <input tabindex="1" id="groupAnonymous" type="radio" name="optDecide" value="anonymous">
+                <label for="groupAnonymous">@Messages("view.ibmDigitalAnalytics.groupAnonymous")</label>
+            </div>
+            <div class="multiple-choice">
+                <input tabindex="1" id="optOut" type="radio" name="optDecide" value="opt_out">
+                <label for="optOut">@Messages("view.ibmDigitalAnalytics.optOut")</label>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <input tabindex="3" class="button" type="submit" onclick="determineOptOut();"  value="@Messages("view.ibmDigitalAnalytics.button.continue")">
+    </div>
+</form>
+
+<script>
+    cmCreatePageviewTag( "OPT-OUT PAGE", "PRIVACY");
+    document.getElementById("statusMessage").innerHTML=getOptOutMessage(currentStatus);
+</script>
+
+</main>
+}

@@ -1,0 +1,240 @@
+@()
+
+@template.main(javascripts = scala.List("application/javascripts/close-window.js"))("view.cookies.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        <a href="#" class="link-back close-window-trigger">@Messages("view.cookies.exitPage")</a>
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+
+                @layouts.pageHeader(fragments.header.pageTitle(Messages("view.cookies.header")))
+
+                <div class="article">
+
+                    <p>@Messages("view.cookies.intro.p1")</p>
+
+                    <p>@Messages("view.cookies.intro.p2")</p>
+
+                    <ul class="list list-bullet">
+                        <li>@Messages("view.cookies.intro.l1")</li>
+                        <li>@Messages("view.cookies.intro.l2")</li>
+                    </ul>
+
+                    <div class="panel panel-border-narrow">
+                        <p>@Messages("view.cookies.intro.p3")</p>
+                    </div>
+
+                    <p>@Messages("view.cookies.intro.p4")</p>
+
+                    <p>@Html(Messages("view.cookies.intro.p5"))</p>
+
+                    <h2 class="heading-large">@Messages("view.cookies.howCookiesUsed.heading")</h2>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.webUsage")</h3>
+
+                    <p>@Html(Messages("view.cookies.webUsage.p1"))</p>
+
+                    <p>@Messages("view.cookies.webUsage.p2")</p>
+
+                    <ul class="list list-bullet">
+                        <li>@Messages("view.cookies.webUsage.l1")</li>
+                        <li>@Messages("view.cookies.webUsage.l2")</li>
+                        <li>@Messages("view.cookies.webUsage.l3")</li>
+                        <li>@Messages("view.cookies.webUsage.l4")</li>
+                    </ul>
+
+                    <p>@Messages("view.cookies.webUsage.p3")</p>
+
+                    <div class="panel panel-border-narrow">
+                        <p>@Messages("view.cookies.webUsage.p4")</p>
+                    </div>
+
+                    <p>@Messages("view.cookies.webUsage.p5")</p>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.webUsage.universalAnalytics.heading")</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.universalAnalytics.table.r1.name")</td>
+                                <td>@Messages("view.cookies.webUsage.universalAnalytics.table.r1.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.universalAnalytics.table.r1.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.universalAnalytics.table.r2.name")</td>
+                                <td>@Messages("view.cookies.webUsage.universalAnalytics.table.r2.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.universalAnalytics.table.r2.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.webUsage.googleAnalytics.heading")</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.googleAnalytics.table.r1.name")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r1.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r1.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.googleAnalytics.table.r2.name")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r2.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r2.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.googleAnalytics.table.r3.name")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r3.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r3.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.googleAnalytics.table.r4.name")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r4.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.googleAnalytics.table.r4.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.webUsage.ibmAnalytics.heading")</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.ibmAnalytics.table.r1.name")</td>
+                                <td>@Messages("view.cookies.webUsage.ibmAnalytics.table.r1.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.ibmAnalytics.table.r1.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.ibmAnalytics.table.r2.name")</td>
+                                <td>@Messages("view.cookies.webUsage.ibmAnalytics.table.r2.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.ibmAnalytics.table.r2.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.ibmAnalytics.table.r3.name")</td>
+                                <td>@Messages("view.cookies.webUsage.ibmAnalytics.table.r3.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.ibmAnalytics.table.r3.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.webUsage.govUK.heading")</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.webUsage.govUK.table.r1.name")</td>
+                                <td>@Messages("view.cookies.webUsage.govUK.table.r1.purpose")</td>
+                                <td>@Messages("view.cookies.webUsage.govUK.table.r1.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>@Html(Messages("view.cookies.webUsage.optOutGoogleAnalytics"))</p>
+                    <p>@Html(Messages("view.cookies.webUsage.ibmDigitalAnalytics", routes.ApplicationController.displayibmDigitalAnalytics()))</a></p>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.introductoryMessage.heading")</h3>
+
+                    <p>@Messages("view.cookies.introductoryMessage.p1")</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.introductoryMessage.r1.name")</td>
+                                <td>@Messages("view.cookies.introductoryMessage.r1.purpose")</td>
+                                <td>@Messages("view.cookies.introductoryMessage.r1.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.session.heading")</h3>
+
+                    <p>@Messages("view.cookies.session.p1")</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.session.table.r1.name")</td>
+                                <td>@Messages("view.cookies.session.table.r1.purpose")</td>
+                                <td>@Messages("view.cookies.session.table.r1.expires")</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.session.table.r2.name")</td>
+                                <td>@Messages("view.cookies.session.table.r2.purpose")</td>
+                                <td>@Messages("view.cookies.session.table.r2.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="heading-medium">@Messages("view.cookies.languageSelection.heading")</h3>
+
+                    <p>@Messages("view.cookies.languageSelection.p1")</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">@Messages("view.cookies.table.headerName")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerPurpose")</th>
+                                <th scope="col">@Messages("view.cookies.table.headerExpires")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">@Messages("view.cookies.languageSelection.table.r1.name")</td>
+                                <td>@Messages("view.cookies.languageSelection.table.r1.purpose")</td>
+                                <td>@Messages("view.cookies.languageSelection.table.r1.expires")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="meta-data group">
+                        <p class="modified-date">@Messages("view.cookies.lastUpdated")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+}

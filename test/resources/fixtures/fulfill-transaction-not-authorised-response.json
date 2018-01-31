@@ -1,0 +1,7 @@
+{
+  "status": 412,
+  "error": {
+    "code": "PE-412-01",
+    "message": "Payment not authorised"
+  }
+}

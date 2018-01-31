@@ -1,0 +1,23 @@
+@import uk.gov.dvla.domain.Offence
+@import views.template.Stylesheet
+
+@(criteria: Offence.Criteria)
+
+
+@content = {
+
+<p class="bold-medium">@Messages("view.paymentAlreadyMade.subHeader")</p>
+
+@fragments.offenceCriteriaTable(criteria, true)
+
+<p>@Html(Messages("view.paymentAlreadyMade.printPage"))</p>
+
+
+<p><a href="https://www.gov.uk" class="button spacer" role="button" tabindex="6">@Messages("view.paymentAlreadyMade.button.finish")</a></p>
+}
+
+
+@layouts.errorPage(
+Messages("view.paymentAlreadyMade.header"),
+content
+)

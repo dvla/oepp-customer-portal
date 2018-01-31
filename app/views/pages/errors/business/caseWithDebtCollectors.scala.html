@@ -1,0 +1,20 @@
+@()
+
+@content = {
+    <p class="bold-medium">@Messages("view.caseWithDebtCollectors.subHeader")</p>
+
+    <div class="panel panel-border-wide">
+        <p>@Messages("view.caseWithDebtCollectors.notice")</p>
+    </div>
+
+    <h2 class="heading-medium">@Messages("view.caseWithDebtCollectors.otherWaysToPay.heading")</h2>
+
+    @fragments.otherWaysToPay()
+
+    <p><a href="https://www.gov.uk" class="button spacer" role="button" tabindex="6">@Messages("view.caseWithDebtCollectors.button.exit")</a></p>
+}
+
+@layouts.errorPage(
+    Messages("view.caseWithDebtCollectors.header"),
+    content
+)

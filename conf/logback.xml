@@ -1,0 +1,28 @@
+<configuration scan="true">
+    
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%-5level [%date] customer-portal %thread %logger: %X{PRN}:%X{VRM} - %message%n%xException</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="play" level="INFO" />
+  <logger name="application" level="DEBUG" />
+  <logger name="audit-service" level="DEBUG" />
+
+  <logger name="com.amazonaws" level="WARN"/>
+  <logger name="com.amazonaws.request" level="DEBUG"/>
+
+  <!-- Extensive Amazon SES logging - uncomment for troubleshooting -->
+  <!--
+  <logger name="com.amazonaws" level="DEBUG"/>
+  <logger name="org.apache.http.wire" level="DEBUG"/>
+  -->
+
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+  </root>
+
+  <logger name="http.request" additivity="false" />
+
+</configuration>

@@ -1,0 +1,65 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+
+GET     /                                           controllers.ApplicationController.redirectToStartPage()
+
+GET     /search                                     controllers.ApplicationController.displaySearchCaseForm()
+POST    /search                                     controllers.ApplicationController.onCaseSearch()
+
+GET     /penalty                                    controllers.ApplicationController.displayPenaltySummaryPage()
+POST    /penalty                                    controllers.ApplicationController.onPenaltyAcceptance()
+
+GET     /receipt                                    controllers.ApplicationController.displayReceiptSelectionForm()
+POST    /receipt                                    controllers.ApplicationController.onReceiptSelection()
+
+POST    /payment                                    controllers.ApplicationController.initPayment()
+
+GET     /payment/start                              controllers.ApplicationController.displayPaymentForm()
+
+GET     /payment/finish                             controllers.ApplicationController.fulfillTransaction()
+POST    /payment/finish                             controllers.ApplicationController.fulfillTransaction()
+
+GET     /payment/confirmation                       controllers.ApplicationController.displayPaymentConfirmation()
+
+POST    /confirmation                               controllers.ApplicationController.onWhatNextSelection()
+
+GET     /thank-you                                  controllers.ApplicationController.displayThankYouPage()
+
+GET     /error/case-not-found                       controllers.ErrorController.displayCaseNotFoundErrorPage()
+GET     /error/vehicle-registration-mark-mismatch   controllers.ErrorController.displayVehicleRegistrationMarkMismatchErrorPage()
+GET     /error/payment-already-made                 controllers.ErrorController.displayPaymentAlreadyMadeErrorPage()
+GET     /error/no-payment-required                  controllers.ErrorController.displayNoPaymentRequiredErrorPage()
+GET     /error/case-with-a-debt-recovery-agency     controllers.ErrorController.displayCaseWithDebtCollectorsErrorPage()
+GET     /error/cannot-pay-online                    controllers.ErrorController.displayCannotPayOnlineErrorPage()
+GET     /error/payment-not-authorised               controllers.ErrorController.displayPaymentNotAuthorisedErrorPage()
+GET     /error/payment-error                        controllers.ErrorController.displayPaymentErrorPage()
+GET     /error/penalty-details-locked               controllers.ErrorController.displayPenaltyDetailsLockedErrorPage()
+GET     /error/service-unavailable                  controllers.ErrorController.displayServiceUnavailableErrorPage()
+GET     /error/page-not-found                       controllers.ErrorController.displayPageNotFoundErrorPage()
+GET     /error/prosecution                          controllers.ErrorController.displayProsecutionPage()
+
+
+GET     /support/feedback                           controllers.FeedbackController.displayFeedbackForm()
+POST    /support/feedback                           controllers.FeedbackController.submitFeedback()
+GET     /support/feedback/thank-you                 controllers.FeedbackController.displayFeedbackSubmittedPage()
+GET     /support/feedback/error                     controllers.FeedbackController.displayFeedbackNotSubmittedPage()
+
+GET     /help/cookies                               controllers.ApplicationController.displayCookies()
+GET     /help/ibmDigitalAnalytics                   controllers.ApplicationController.displayibmDigitalAnalytics()
+POST    /help/ibmDigitalAnalytics                   controllers.ApplicationController.onOptSelection()
+GET     /help/terms-and-conditions                  controllers.ApplicationController.displayTermsAndConditions()
+HEAD    /healthcheck                                controllers.HealthCheckController.checkServiceHealthReturningStatusOnly()
+GET     /healthcheck                                controllers.HealthCheckController.checkServiceHealthReturningReport()
+
+GET     /ping                                       controllers.PingController.ping()
+
+GET     /$language<[a-z]{2}>/*page                  controllers.InternationalizationController.changeLanguage(language, page)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                               controllers.Assets.versioned(path="/public", file: Asset)
+
+# Map robots.txt for search engines
+GET     /$file<robots.txt>                          controllers.Assets.at(path="/public", file)

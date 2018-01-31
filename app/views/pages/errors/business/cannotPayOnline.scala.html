@@ -1,0 +1,18 @@
+@()
+
+@content = {
+
+<div class="text">
+    <p class="heading-medium">@Messages("view.cannotPayOnline.otherWaysToPay.heading")</p>
+</div>
+
+@fragments.otherWaysToPay()
+
+<p><a href="https://www.gov.uk" class="button spacer" role="button" tabindex="6">@Messages("view.cannotPayOnline.button.exit")</a></p>
+
+}
+
+@layouts.errorPage(
+Messages("view.cannotPayOnline.header"),
+content
+)

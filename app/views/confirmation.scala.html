@@ -1,0 +1,177 @@
+@import uk.gov.dvla.domain.Offence
+@import models.Payment
+@import utils.Formatter
+@import views.models.EVLView
+@import views.template.Stylesheet
+@import views.ViewFunctions._
+@import views.VRM
+@import models.form.ConfirmationUntaxedModel
+@import helper._
+
+@import scala.collection.immutable.{List => ScalaList}
+
+@(offence: Offence, paymentReceipt: PaymentReceipt, payment: Payment)(implicit form: play.data.Form[ConfirmationUntaxedModel])
+
+@untaxedVehicleWhatNextErrors = @{
+form("whatNextDecision").errors
+}
+
+@untaxedLayout = {
+<div >
+    <div >
+        <div>
+            <div class="grid-row">
+                <div class="column-two-thirds">
+                    <error class="top-margin" data-errorHeading="There was a problem submitting the form" data-errorDescription="You must:"></error>
+                    <h1 class="heading-large">@Html(Messages("view.confirmation.untaxed.heading"))</h1>
+                    @whatNextTaxLinksNew
+                </div>
+                <div class="column-third">
+                    <aside class="govuk-related-items margin-top-2-5" role="complementary">
+                        <h2 class="bold-medium">@Messages("view.confirmation.summary.heading")</h2>
+                        <ul class="ul-data">
+                            <li>
+                                <p>@Messages("view.confirmation.summary.penaltyReferenceNumber.heading")</p>
+                                <strong class="bold"><span id="penaltyref">@offence.getCriteria.getCaseNumber</span></strong>
+                            </li>
+                            <li>
+                                <p>@Messages("view.confirmation.summary.vehicleRegistrationNumber.heading")</p>
+                                <strong class="bold"><span id="vrm">@VRM.format(offence.getCriteria.getVehicleRegistrationMark)</span></strong>
+                            </li>
+                            <li>
+                                <p>@Messages("view.confirmation.summary.paymentReference.heading")</p>
+                                <strong class="bold"><span>DVLA@offence.getCriteria.getCaseNumber</span></strong>
+                            </li>
+                            @if(paymentReceipt.isReceiptRequested){
+                            <li id="emailrow">
+                                <p>@Messages("view.confirmation.summary.emailAddress.heading")</p>
+                                <strong class="bold"><span id="emailaddress">@Messages(paymentReceipt.getUserEmail)</span></strong>
+                            </li>
+                            }
+                            <li>
+                                <p>@Messages("view.confirmation.summary.datePaid.heading")</p>
+                                <strong class="bold"><span id="datepaid">@Formatter.formatDate(payment.getPaidDate.get, userLocale)</span></strong>
+                            </li>
+                            <li>
+                                <p>@Messages("view.confirmation.summary.totalAmountPaid.heading")</p>
+                                <strong class="bold"><span id="total">@Formatter.formatMoney(offence.getCaseData.get().getPaymentAmount)</span></strong>
+                            </li>
+                        </ul>
+                        <p>@Html(Messages("view.confirmation.printPage"))</p>
+                    </aside>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@whatNextTaxLinksNew = {
+<script type="text/javascript"> cmCreatePageviewTag("NOW DO ONE OF THE FOLLOWING","OEPP"); cmCreateRegistrationTag("@offence.getCriteria.getCaseNumber","","","","","","Paid fine - untaxed"); cmCreateConversionEventTag("Pay a DVLA fine","2","Fine payments","0");  </script>
+
+<h2 class="heading-medium">@Messages("view.confirmation.whatNext.heading")</h2>
+
+    <div id="choose-an-option" data-required class="form-group">
+        <div class="multiple-choice">
+            <input tabindex="1" class="analytics-click-event-trigger" data-event-label="EVL Tax link activated" id="whatNextDecision-1" type="radio" name="whatNextDecision" value="tax" @if(form("ConfirmationUntaxedModel").value == "true") { checked="checked" }>
+            <label class="block-label" for="whatNextDecision-1">
+                @Messages("view.confirmation.whatNext.taxVehicle")
+            </label>
+        </div>
+        <div class="multiple-choice">
+            <input tabindex="2" class="analytics-click-event-trigger" data-event-label="EVL SORN link activated" id="whatNextDecision-2" type="radio" name="whatNextDecision" value="sorn" @if(form("ConfirmationUntaxedModel").value == "false") { checked="checked" }>
+            <label class="block-label" for="whatNextDecision-2">
+                @Messages("view.confirmation.whatNext.sornVehicle")
+            </label>
+        </div>
+        <div class="multiple-choice">
+            <input tabindex="3" class="analytics-click-event-trigger" data-event-label="Sold vehicle link activated" id="whatNextDecision-3" type="radio" name="whatNextDecision" value="sold" @if(form("ConfirmationUntaxedModel").value == "false") { checked="checked" }>
+            <label class="block-label" for="whatNextDecision-3">
+                @Html(Messages("view.confirmation.whatNext.soldVehicle"))
+            </label>
+        </div>
+        <h3 class="form-block heading-small margin-top-1"> @Html(Messages("view.confirmation.whatNext.Or")) </h3>
+        <div class="multiple-choice" data-target="recently-taxed">
+            <input tabindex="4" id="whatNextDecision-4" type="radio" name="whatNextDecision" value="completed" @if(form("ConfirmationUntaxedModel").value == "false") { checked="checked" }>
+            <label class="block-label" for="whatNextDecision-4">
+                @Html(Messages("view.confirmation.vehicleTaxStatus.recentlyPaid"))
+            </label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="recently-taxed">
+            <p>@Html(Messages("view.confirmation.vehicleTaxStatus.recentlyPaid.p1"))</p>
+        </div>
+    </div>
+}
+
+
+@template.main(stylesheets = scala.List(Stylesheet("application/stylesheets/print.css", "print")), javascripts = scala.List("application/javascripts/print-dialog.js", "application/javascripts/analytics-send-custom-event.js"))("view.confirmation.title") {
+<main id="content" role="main">
+    @fragments.phaseBanner()
+
+    @if(!offence.getVehicleData.isTaxed && offence.getCaseData.get.getCaseType != "144A"){
+    @*header*@
+    @layouts.pageHeader{
+    }
+    <form method="POST" action="@routes.ApplicationController.onWhatNextSelection()" novalidate multisubmit>
+        @CSRF.formField
+        @fragments.errorSummary(scala.List(untaxedVehicleWhatNextErrors))
+
+        @untaxedLayout
+        <input tabindex="5" class="button spacer" type="submit" value= "@Messages("view.confirmation.button.finish")">
+    </form>
+    }else {
+    @layouts.pageHeader{
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <div class="govuk-box-highlight">
+                <h1 class="bold-large">&#10003;&nbsp;&nbsp;@Messages("view.confirmation.paymentStatus.heading")</h1>
+            </div>
+        </div>
+    </div>
+    }
+    }
+    @if((offence.getVehicleData.isTaxed) || (offence.getCaseData.get.getCaseType == "144A")) {
+    <script type="text/javascript"> cmCreatePageviewTag("PENALTY PAYMENT SUCCESSFUL","OEPP"); cmCreateRegistrationTag("@offence.getCriteria.getCaseNumber","","","","","","Paid fine"); cmCreateConversionEventTag("Pay a DVLA fine","2","Fine payments","0");  </script>
+    <div class="grid-row">
+        <div class="column-two-thirds">
+        <h3 class="heading-medium">@Messages("view.confirmation.summary.heading")</h3>
+        <ul class="ul-data">
+            <li>
+                <span class="amount">@Messages("view.confirmation.summary.penaltyReferenceNumber.heading")</span>
+                <span class="bold">@offence.getCriteria.getCaseNumber</span>
+            </li>
+            <li>
+                <span class="amount">@Messages("view.confirmation.summary.vehicleRegistrationNumber.heading")</span>
+                <span class="bold">@VRM.format(offence.getCriteria.getVehicleRegistrationMark)</span>
+            </li>
+            <li>
+                <span class="amount">@Messages("view.confirmation.summary.paymentReference.heading")</span>
+                <span class="bold">DVLA@offence.getCriteria.getCaseNumber</span>
+            </li>
+            @if(paymentReceipt.isReceiptRequested){
+            <li>
+                <span class="amount">@Messages("view.confirmation.summary.emailAddress.heading")</span>
+                <span class="bold">@Messages(paymentReceipt.getUserEmail)</span>
+            </li>
+            }
+            <li>
+                <span class="amount">@Messages("view.confirmation.summary.datePaid.heading")</span>
+                <span class="bold">@Formatter.formatDate(payment.getPaidDate.get, userLocale)</span>
+            </li>
+            <li>
+                <span class="amount">@Messages("view.confirmation.summary.totalAmountPaid.heading")</span>
+                <span class="bold">@Formatter.formatMoney(offence.getCaseData.get().getPaymentAmount)</span>
+            </li>
+        </ul>
+
+        <p>@Html(Messages("view.confirmation.printPage.full"))</p>
+        <p><a href="@routes.ApplicationController.displaySearchCaseForm()" tabindex="5">@Messages("view.confirmation.link.service")</a></p>
+        <p><a href="https://www.gov.uk/done/pay-dvla-fine" class="button spacer" role="button" tabindex="6">@Messages("view.confirmation.button.feedback")</a></p>
+
+    </div>
+    </div>
+
+    }
+</main>
+}

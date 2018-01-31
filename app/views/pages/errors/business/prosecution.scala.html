@@ -1,0 +1,27 @@
+@(header: String, message: String)
+
+@content = {
+
+    <p>@message</p>
+
+    <p class="heading-medium">@Messages("view.prosecution.subHeader")</p>
+
+    <p>@Messages("view.prosecution.p2")</p>
+
+<div class="notice">
+    <i class="icon icon-important">
+        <span class="visuallyhidden">@Messages("common.warning")</span>
+    </i>
+    <img class="icon visible-for-print-inline" src="@routes.Assets.versioned("toolkit/images/icon-important.png")" alt="!">
+    <strong class="heading-small">@Messages("view.prosecution.warning")</strong>
+</div>
+
+
+<p><a href="https://www.gov.uk" class="button spacer" role="button" tabindex="6">@Messages("view.prosecution.button.exit")</a></p>
+
+}
+
+@layouts.errorPage(
+header,
+content
+)

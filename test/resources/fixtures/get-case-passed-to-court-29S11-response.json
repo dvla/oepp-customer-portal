@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "caseNumber": "66660043",
+    "vehicleRegistrationMark": "CV07EEE"
+  },
+  "caseRejection": {
+    "rejectionReason": "PASSED_TO_COURT"
+   },
+  "vehicleData": {
+    "taxed": true
+  }
+}

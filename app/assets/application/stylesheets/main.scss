@@ -1,0 +1,430 @@
+@import '../../toolkit/stylesheets/colours';
+@import '../../toolkit/stylesheets/design-patterns/alpha-beta';
+@import '../../elements/stylesheets/elements/components';
+@import '../../elements/stylesheets/elements/forms/form-validation';
+@import '../../elements/stylesheets/elements/helpers';
+
+.phase-banner {
+  @include phase-banner();
+}
+
+// Error outline START
+
+.form-group-error {
+  .form-control {
+    @extend .form-control-error
+  }
+}
+
+// Error outline END
+
+.page-header {
+  padding: initial;
+  border-bottom: initial;
+  border-style: none;
+}
+
+fieldset details {
+  display: inline-block;
+  margin-bottom: 1.25em;
+}
+
+// Reg mark START
+
+#vehicleRegistrationMarkInput, .reg-mark {
+  text-transform: uppercase;
+}
+
+// Reg mark END
+
+.error-box-highlight {
+  @extend .govuk-box-highlight;
+  color: $black;
+  background: $grey-3;
+}
+
+// Remove italic style
+address {
+  font-style: normal;
+}
+
+// iFrame START
+
+iframe {
+  width: 100%;
+  height: 980px;
+  border: none;
+
+  #purchaseDetailsPanel { /* needs to be moved to the payment CSS file */
+    display: none;
+  }
+}
+
+// iFrame END
+
+// Feedback screen START
+
+#feedback-form .remaining-characters {
+  display: none;
+}
+
+.js-enabled #feedback-form .remaining-characters {
+  display: inherit;
+}
+
+// Feedback screen END
+
+// Button START
+
+.button {
+  &.print-button {
+    margin-top: 30px
+  }
+
+  &.spacer {
+    margin-top: 30px
+  }
+
+  &.spacer-large {
+      margin-top: 50px
+    }
+}
+
+// Button END
+
+// ----------- Table List Style START -----------
+
+/* UL styles - START */
+
+ul.ul-data {
+  list-style-type: none;
+  list-style-image: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+ul.ul-data li {
+  // match table padding
+  padding-top: em(12, 19);
+  padding-bottom: em(9, 19);
+  border-bottom: 1px solid $border-colour;
+  display: -moz-inline-stack;
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+}
+
+ul.ul-data li:first-child {
+  border-top: 1px solid $border-colour;
+}
+
+ul.ul-data li > span:first-child {
+  padding-right: 5%;
+  width: 45%;
+  float: left;
+  display: -moz-inline-stack;
+  display: inline-block;
+}
+
+ul.ul-data li span {
+  .highlighted-event {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 0;
+  }
+
+  .notice {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  ul.ul-data li span {
+    width: 100% !important;
+  }
+  ul.ul-data li > span:first-child {
+    padding-right: 0;
+  }
+}
+
+ul.ul-data li .amount {
+  width: 50%;
+  float: left;
+  text-align: left;
+  display: -moz-inline-stack;
+  display: inline-block;
+
+}
+
+@media (max-width: 640px) {
+  ul.ul-data li .amount {
+    width: 100% !important;
+  }
+}
+
+ul.ul-data li p {
+  margin: 0 0 0 0;
+
+}
+
+// ----------- Table List Style END -----------
+
+details.where-to-find {
+  padding-bottom: 30px;
+}
+
+.what-to-do-next .form-hint {
+  color: $text-colour;
+}
+
+// ----------- Highlighted event START -----------
+
+.highlighted-event {
+
+  color: $page-colour;
+  text-align: center;
+  display: block;
+
+  details summary,
+  a:link,
+  a:visited {
+    color: $page-colour;
+  }
+
+  &.danger, .danger {
+    background-color: $red;
+  }
+
+  &.success, .success {
+    background-color: $turquoise;
+  }
+
+  .heading-medium {
+    margin: 1.25em 0.5em 0.25em 0.5em;
+  }
+
+    .heading-medium-confirm {
+    margin: 0.5em 0.5em 0.25em 0.5em;
+    font-size: 24px;
+    line-height: 1.25;
+    font-family:"nta",Arial, sans serif;
+    font-weight: 700;
+    text-transform:none;
+  }
+
+  .heading-small {
+    margin: 1.5em 0.5em 0.5em 0.5em;
+
+    &.small-spacing {
+      margin-top: 0.25em;
+    }
+
+  }
+
+  @media (max-width: 640px) {
+    .small-spacing {
+      margin-bottom: 1em;
+    }
+  }
+
+  details {
+    margin: 0.75em 0.5em 1em 0.5em;
+  }
+
+  &.partial-include {
+    .heading-small {
+      margin: 0;
+    }
+    details {
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+// ----------- Highlighted event END -----------
+
+// ----------- Alert box vertical alignment START -----------
+
+/* column container */
+.colmask {
+	clear: both;
+	float: left;
+	width: 100%;			/* width of whole page */
+	overflow: hidden;		/* This chops off any overhanging divs */
+	position: relative;
+	margin-top: 30px;
+}
+/* common column settings */
+.colright, .colmid, .colleft {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.col1, .col2, .col3 {
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+/* 2 Column (double page) settings */
+.doublepage {
+}
+.doublepage .colleft {
+	right: 52%;			    /* right column width */
+}
+.doublepage .col1 {
+	width: 48%;			    /* left column content width (column width minus left and right padding) */
+	left: 52%;			    /* right column width plus left column left padding */
+}
+.doublepage .col2 {
+	width: 48%;			    /* right column content width (column width minus left and right padding) */
+	left: 56%;			    /* (right column width) plus (left column left and right padding) plus (right column left padding) */
+}
+@media (max-width: 640px) {
+  .doublepage .colleft, .doublepage .col1, .doublepage .col2 {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.singlepage {
+  margin-top: 30px;
+  padding: 0.75em;
+
+  &.partial-include {
+    margin-top: 0;
+  }
+
+  .heading-medium {
+    margin-top: 0.5em;
+  }
+
+  @media (max-width: 640px) {
+    .small-spacing {
+      margin-bottom: 0.25em;
+    }
+  }
+
+}
+
+// ----------- Alert box vertical alignment END -----------
+
+// Meta Data START
+
+.meta-data {
+	font-family: "nta", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.14286;
+	font-weight: 400;
+	text-transform: none;
+	color: #6f777b
+}
+
+@media (min-width: 641px) {
+  .meta-data {
+      font-size: 16px;
+      line-height: 1.25
+  }
+}
+.meta-data p {
+	text-align: left;
+	font-family: "nta", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.14286;
+	font-weight: 400;
+	text-transform: none
+}
+.meta-data p a {
+	color: #6f777b
+}
+
+@media (min-width: 641px) {
+  .meta-data p {
+      font-size: 16px;
+      line-height: 1.25
+  }
+}
+
+// Meta Data END
+
+// Print icons only START
+
+.visible-for-print-inline {
+   display: none;
+}
+
+.visible-for-print-block {
+   display: none;
+}
+
+// Print icons only END
+
+// ----------- Image Styles  -----------
+
+.image-for-mobile{
+    max-width:100%;
+}
+
+// ----------- Image Style END -----------
+
+// ----------- Button Link ---------------
+
+.button-link {
+    /* Remove all decorations to look like a link */
+    background: none;
+    border: none;
+    display: inline;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    outline-offset: 0;
+    color: $link-colour;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.button-link:focus, .button-link:active {
+    @extend .button-link;
+    color: $link-active-colour;
+}
+
+// ----------- Button Link END -----------
+
+//------------ UL on confirmation --------
+ul.ul-fullWidth li {
+  // match table padding
+  padding-top: em(12, 19);
+  padding-bottom: em(9, 19);
+  border-bottom: 1px solid $border-colour;
+  display: -moz-inline-stack;
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+}
+//-------------------------------------------
+
+//-----------------------------------------
+ .heading-medium-narrow-margin {
+    margin-top: 1em;
+    margin-bottom:0.5em;
+  }
+//---------------------------------------
+
+//---------------------------------------
+.govuk-related-items{
+    border-top:10px solid #005ea5;
+    padding-top:5px;
+    .margin-top-2-5{
+        margin-top: 2.5em;
+    }
+    margin-top:50px;
+}
+//---------------------------------------
+
+.frame-highlight{
+    &:focus {
+          outline: 3px solid $focus-colour;
+        }
+}

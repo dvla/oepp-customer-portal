@@ -1,0 +1,18 @@
+@(headerContent: Html, extraHeaderContent: Html = HtmlFormat.empty)
+
+@extraHeaderContentProvided = @{!extraHeaderContent.body.trim.isEmpty}
+
+<!-- Header START -->
+<header class="page-header group">
+    <div @if(extraHeaderContentProvided) { class="grid-row" }>
+        <div @if(extraHeaderContentProvided) { class="column-half" }>
+            @headerContent
+        </div>
+        @if(extraHeaderContentProvided) {
+        <div class="column-half">
+            @extraHeaderContent
+        </div>
+        }
+    </div>
+</header>
+    <!-- Header END -->

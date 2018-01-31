@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "caseNumber": "44444444",
+    "vehicleRegistrationMark": "CV04AAA"
+  },
+  "caseRejection": {
+    "rejectionReason": "PENALTY_ALREADY_PAID",
+    "caseClosureDate": "2015-07-30T23:00:00.000Z"
+  },
+  "vehicleData": {
+    "taxed": true
+  }
+}

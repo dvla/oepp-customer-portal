@@ -1,0 +1,13 @@
+@()
+
+@template.main()("view.thanks.title") {
+<main id="content" role="main">
+    @fragments.phaseBanner()
+
+    @layouts.pageHeader(fragments.header.pageTitle(Messages("view.thanks.header")))
+
+    <p>@Html(Messages("view.thanks.message"))</p>
+
+    <p><a href="https://www.gov.uk" class="button spacer" role="button" tabindex="1">@Messages("view.thanks.button.exit")</a></p>
+</main>
+}

@@ -1,0 +1,190 @@
+@import uk.gov.dvla.domain.Offence
+@import utils.Formatter
+@import java.util.Date
+@import views.ViewFunctions._
+@import views.VRM
+
+@(offence: Offence, paidDate: Date, userEmailAddress: String, feedbackEmailAddress: String)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>@Messages("email.receipt.title")</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta content="telephone=no" name="format-detection"/>
+    </head>
+    <body style="margin: 0; padding: 0;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #0B0C0C;">
+            <tr>
+                <td>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td style="border-collapse: collapse; padding: 15px; color: #FFFFFF; font-family: sans-serif; font-size: 19px; width: 40px;">
+                                <img src="@routes.Assets.versioned("application/images/mailing/dvla-logo.png").absoluteURL()" width="40" height="40" alt="" style="border-left: 3px solid #007663; padding-left: 12px;"/>
+                            </td>
+                            <td style="border-collapse: collapse; padding: 15px 15px 15px 0; color: #FFFFFF; font-family: sans-serif; font-size: 19px;">
+                                @Html(Messages("email.receipt.header.agencyName"))
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td style="border-collapse: collapse; padding: 30px 15px 0 15px; color: #0B0C0C; font-family: sans-serif; font-size: 19px; font-weight: bold;">
+                    @Messages("email.receipt.paymentReceipt.heading")
+                </td>
+            </tr>
+        </table>
+        @if(offence.getVehicleData.isTaxed || offence.getCaseData.get.getCaseType == "144A") {
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <td style="border-collapse: collapse; padding: 15px; color: #FFFFFF;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                            <tr>
+                                <td style="border-collapse: collapse; padding: 30px; color: #FFFFFF; font-family: sans-serif; font-size: 24px; font-weight: bold; text-align: center; background-color: #28A197;">
+                                    @Messages("email.receipt.paymentStatus.heading", offence.getCriteria.getCaseNumber.toString)
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        } else {
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                <tr>
+                    <td style="border-collapse: collapse; padding: 15px; color: #FFFFFF;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                            <tr>
+                                <td style="border-collapse: collapse; padding: 15px; color: #FFFFFF; font-family: sans-serif; font-size: 24px; font-weight: bold; text-align: center; background-color: #28A197; width: 50%; border-right: 15px solid #FFFFFF;">
+                                    @Messages("email.receipt.paymentStatus.heading", offence.getCriteria.getCaseNumber.toString)
+                                </td>
+                                <td style="border-collapse: collapse; padding: 15px; color: #FFFFFF; font-family: sans-serif; font-size: 19px; font-weight: bold; text-align: center; background-color: #B10E1E; width: 50%; border-left: 15px solid #FFFFFF;">
+                                    <p>@Messages("email.receipt.vehicleTaxStatus.heading", Formatter.formatDate(offence.getVehicleData.getNewTaxStartDate.get().toDate, userLocale()))</p>
+                                    <p style="font-weight: normal;">@Messages("email.receipt.vehicleTaxStatus.recentlyPaid")<br/>
+                                        @Html(Messages("email.receipt.vehicleTaxStatus.recentlyPaid.p1"))</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-collapse: collapse; padding: 15px; color: #0B0C0C;">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                            <tr>
+                                <td style="border-collapse: collapse; font-family: sans-serif; font-size: 24px; font-weight: bold;">
+                                    <img style="vertical-align: middle;" src="@routes.Assets.versioned("toolkit/images/icon-important.png").absoluteURL()" width="40" height="40" alt=""/>
+                                    @Messages("email.receipt.whatNext.heading")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-collapse: collapse; font-family: sans-serif; font-size: 16px;">
+                                    <p>@Messages("email.receipt.whatNext.p1")</p>
+                                    <p>@Html(Messages("email.receipt.whatNext.taxVehicle"))</p>
+                                    <p>@Html(Messages("email.receipt.whatNext.sornVehicle"))</p>
+                                    <p>@Html(Messages("email.receipt.whatNext.soldVehicle"))</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        }
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td style="border-collapse: collapse; padding: 15px; color: #FFFFFF;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                        <tr style="border-top: 1px solid #bfc1c3; border-bottom: 1px solid #bfc1c3;">
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; padding: 15px 0;">
+                                @Messages("email.receipt.summary.penaltyReferenceNumber.heading")
+                            </td>
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase;">
+                                @offence.getCriteria.getCaseNumber
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #bfc1c3;">
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; padding: 15px 0;">
+                                @Messages("email.receipt.summary.vehicleRegistrationNumber.heading")
+                            </td>
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase;">
+                                @VRM.format(offence.getCriteria.getVehicleRegistrationMark)
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #bfc1c3;">
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; padding: 15px 0;">
+                                @Messages("email.receipt.summary.paymentReference.heading")
+                            </td>
+                            <td style="border-collapse: collapse; color: #0B0C0C !important; text-decoration: none; font-family: sans-serif; font-size: 16px; font-weight: bold;">
+                                @("DVLA" + offence.getCriteria.getCaseNumber)
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #bfc1c3;">
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; padding: 15px 0;">
+                                @Messages("email.receipt.summary.emailAddress.heading")
+                            </td>
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; font-weight: bold;">
+                                @userEmailAddress
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #bfc1c3;">
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; padding: 15px 0;">
+                                @Messages("email.receipt.summary.datePaid.heading")
+                            </td>
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 15px 0;">
+                                @Formatter.formatDate(paidDate, userLocale)
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #bfc1c3;">
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 19px; padding: 15px 0;">
+                                @Messages("email.receipt.summary.totalAmountPaid.heading")
+                            </td>
+                            <td style="border-collapse: collapse; color: #0B0C0C; font-family: sans-serif; font-size: 19px; font-weight: bold; padding: 15px 0;">
+                                @Formatter.formatMoney(offence.getCaseData.get.getPaymentAmount)
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td style="border-collapse: collapse; padding: 0 15px; font-family: sans-serif; font-size: 16px;">
+                    <p>@Messages("email.receipt.print")</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-collapse: collapse; padding: 0 15px 30px 15px; font-family: sans-serif; font-size: 16px;">
+                    <p style="font-size: 16px; font-weight: bold;">@Messages("email.receipt.feedback.p1")</p>
+                    <p>@Html(Messages("email.receipt.feedback.p2", feedbackEmailAddress))</p>
+                </td>
+            </tr>
+        </table>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #DEE0E2; border-top: 1px solid #bfc1c3">
+            <tr>
+                <td>
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                        <tr>
+                            <td style="border-collapse: collapse; padding: 15px; color: #0B0C0C; font-family: sans-serif; font-size: 16px; line-height: 20px;">
+                                <p>@Messages("email.receipt.footer.unsure.p1")</p>
+                                <ul>
+                                    <li>@Messages("email.receipt.footer.unsure.l1")</li>
+                                    <li>@Html(Messages("email.receipt.footer.unsure.l2", feedbackEmailAddress))</li>
+                                </ul>
+                            </td>
+                            <td style="border-collapse: collapse; padding: 15px; color: #0B0C0C; font-family: sans-serif; font-size: 16px; line-height: 20px;">
+                                <address style="font-style: normal;">
+                                    @Html(Messages("email.receipt.footer.agencyName"))
+                                    D12<br/>
+                                    Longview Road<br/>
+                                    @Messages("email.receipt.footer.agencyTown")<br/>
+                                    SA99 1AH
+                                </address>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

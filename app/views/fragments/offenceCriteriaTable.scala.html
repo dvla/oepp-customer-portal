@@ -1,0 +1,34 @@
+@import uk.gov.dvla.domain.Offence
+@import views.ViewFunctions._
+@import views.VRM
+
+@(criteria: Offence.Criteria, displayBankDetails: Boolean)
+
+<ul class="ul-data">
+
+    <li>
+        <span>@Messages("fragment.offenceCriteriaTable.caseNumber.heading")</span>
+
+        <span class="amount">
+        <span class="bold">@criteria.getCaseNumber.toString()</span>
+        </span>
+    </li>
+    <li>
+        <span>@Messages("fragment.offenceCriteriaTable.vehicleRegistrationNumber.heading")</span>
+
+        <span class="amount">
+        <span class="bold">@VRM.format(criteria.getVehicleRegistrationMark)</span>
+        </span>
+    </li>
+
+    @if(displayBankDetails) {
+        <li>
+            <span>@Messages("fragment.offenceCriteriaTable.paymentReference.heading")</span>
+
+        <span class="amount">
+        <span class="bold">DVLA@criteria.getCaseNumber</span>
+        </span>
+        </li>
+
+    }
+</ul>

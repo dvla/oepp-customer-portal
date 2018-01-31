@@ -1,0 +1,102 @@
+@()
+
+@template.main(javascripts = scala.List("application/javascripts/close-window.js"))("view.termsAndConditions.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        <a href="#" class="link-back close-window-trigger">@Messages("view.termsAndConditions.exitPage")</a>
+
+        <div class="grid-row">
+            <div class="column-two-thirds">
+
+                @layouts.pageHeader(fragments.header.pageTitle(Messages("view.termsAndConditions.header")))
+
+                <div class="article">
+
+                    <div class="summary">
+                        <p>@Messages("view.termsAndConditions.description")</p>
+                    </div>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.useOfWebsite.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.useOfWebsite.p1")</p>
+                    <p>@Messages("view.termsAndConditions.useOfWebsite.p2")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.hyperlinking.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.hyperlinking.p1")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.virusProtection.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.virusProtection.p1")</p>
+                    <p>@Messages("view.termsAndConditions.virusProtection.p2")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.paymentCards.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.paymentCards.p1")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.applicableLaw.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.applicableLaw.p1")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.amendments.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.amendments.p1")</p>
+
+                    <h2 class="heading-large">@Messages("view.termsAndConditions.securityAndPrivacy.heading")</h2>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.security.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.security.p1")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.security.p2")</p>
+                    <ul class="list list-bullet">
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.security.l1")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.security.l2")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.security.l3")</li>
+                    </ul>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p1")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p2")</p>
+                    <ul class="list list-bullet">
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l1")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l2")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l3")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l4")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l5")</li>
+                    </ul>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p3")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p4")</p>
+                    <h4 class="heading-small">@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.informationCollected.heading")</h4>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.informationCollected.p1")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.dataProtection.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.dataProtection.p1")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.dataProtection.p2")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.dataProtection.p3")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.siteUsage.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.siteUsage.p1")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.amendments.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.amendments.p1")</p>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.cookiesPolicy.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.cookiesPolicy.p1")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.cookiesPolicy.p2")</p>
+                    <ul class="list list-bullet">
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.cookiesPolicy.l1")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.cookiesPolicy.l2")</li>
+                        <li>@Messages("view.termsAndConditions.securityAndPrivacy.cookiesPolicy.l3")</li>
+                    </ul>
+
+                    <h2 class="heading-medium">@Messages("view.termsAndConditions.securityAndPrivacy.useOfCookies.heading")</h2>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.useOfCookies.p1")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.useOfCookies.p2")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.useOfCookies.p3")</p>
+                    <p>@Messages("view.termsAndConditions.securityAndPrivacy.useOfCookies.p4")</p>
+
+                    <div class="meta-data group">
+                        <p class="modified-date">@Messages("view.termsAndConditions.lastUpdate")</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+}

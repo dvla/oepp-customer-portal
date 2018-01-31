@@ -1,0 +1,86 @@
+@import helper._
+@import models.form.CaseSearchModel
+@import views.ViewFunctions._
+
+@import scala.collection.immutable.{List => ScalaList}
+
+@(implicit form: play.data.Form[CaseSearchModel])
+
+@caseNumberErrors = @{
+    form("caseNumber").errors
+}
+
+@vehicleRegistrationMarkErrors = @{
+    form("vehicleRegistrationMark").errors
+}
+
+@template.main(javascripts = ScalaList("application/javascripts/vendor/jquery.allowed-chars.js", "application/javascripts/allowed-chars.js"))("view.search.title") {
+    <main id="content" role="main">
+        @fragments.phaseBanner()
+
+        @fragments.backLink(routes.ApplicationController.redirectToStartPage())
+
+        @layouts.pageHeader(fragments.header.pageTitle(Messages("view.search.header")))
+
+        <form method="POST" action="@routes.ApplicationController.onCaseSearch()">
+            @CSRF.formField
+
+            @fragments.errorSummary(errors = ScalaList(caseNumberErrors, vehicleRegistrationMarkErrors))
+
+            <script type="text/javascript"> cmCreatePageviewTag("ENTER DETAILS","OEPP"); cmCreateConversionEventTag("Pay a DVLA fine","1","Fine payments","0"); </script>
+
+            <fieldset>
+                <legend class="visuallyhidden">@Messages("view.search.fieldset.penaltyReferenceNumber")</legend>
+                <div class="form-group @if(!caseNumberErrors.isEmpty) { form-group-error }">
+                    <label for="caseNumberInput" id="caseNumber">
+                        <span class="form-label-bold">@Messages("view.search.fieldset.penaltyReferenceNumber")</span>
+                        <span class="form-hint" id="caseNumberHint">@Messages("view.search.fieldset.penaltyReferenceNumber.hint")</span>
+                        <span class="error-message" id="error-message-case-number">
+                        @for(error <- caseNumberErrors) {
+                            @getMessage(error)<br />
+                        }
+                        </span>
+                    </label>
+                    <input id="caseNumberInput" class="form-control form-control-1-4" name="caseNumber" value="@form("caseNumber").value"
+                           type="tel" maxlength="8" data-allowed-chars="[0-9]" autocomplete="off"
+                           aria-required="true" aria-describedby="error-message-case-number caseNumberHint">
+                </div>
+                <details class="text where-to-find">
+                    <summary><span class="summary"  >@Messages("view.search.fieldset.penaltyReferenceNumber.whereToFind")</span></summary>
+                    <div class="panel panel-border-narrow" id="details-content-0">
+                        <p>@Messages("view.search.whereToFind.intro")</p>
+                        <img alt="@Messages("view.search.whereToFind.image")" src="@routes.Assets.versioned("application/images/PRNreferencehint.png")" class="image-for-mobile" />
+                    </div>
+                </details>
+            </fieldset>
+
+            <fieldset>
+                <legend class="visuallyhidden">@Messages("view.search.fieldset.vehicleRegistrationNumber")</legend>
+                <div class="form-group @if(!vehicleRegistrationMarkErrors.isEmpty) { form-group-error }">
+                    <label for="vehicleRegistrationMarkInput" id="vehicleRegistrationMark">
+                        <span class="form-label-bold">@Messages("view.search.fieldset.vehicleRegistrationNumber")</span>
+                        <span class="form-hint" id="vehicleRegistrationMarkHint">@Messages("view.search.fieldset.vehicleRegistrationNumber.hint")</span>
+                        <span class="error-message" id="error-message-vehicle-registration-mark">
+                        @for(error <- vehicleRegistrationMarkErrors) {
+                            @getMessage(error)<br />
+                        }
+                        </span>
+                    </label>
+                    <input id="vehicleRegistrationMarkInput" class="form-control form-control-1-4" name="vehicleRegistrationMark" value="@form("vehicleRegistrationMark").value"
+                           type="text" maxlength="8" data-allowed-chars="[a-zA-Z0-9 ]" autocomplete="off"
+                           aria-required="true" aria-describedby="error-message-vehicle-registration-mark vehicleRegistrationMarkHint">
+                </div>
+                <details class="text where-to-find">
+                    <summary><span class="summary">@Messages("view.search.fieldset.vehicleRegistrationNumber.whereToFind")</span></summary>
+                    <div class="panel panel-border-narrow" id="details-content-1">
+                        <p>@Messages("view.search.whereToFind.intro")</p>
+                        <img alt="@Messages("view.search.whereToFind.image")" src="@routes.Assets.versioned("application/images/VRMreferencehint.png")" class="image-for-mobile" />
+                    </div>
+                </details>
+            </fieldset>
+
+
+            <input class="button" type="submit" value="@Messages("view.search.button.continue")">
+        </form>
+    </main>
+}

@@ -1,0 +1,7 @@
+@import models.form.FeedbackModel
+
+@(model: FeedbackModel)
+@model.getMessage
+
+@model.getName
+@model.getEmail

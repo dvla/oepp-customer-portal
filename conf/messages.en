@@ -1,0 +1,519 @@
+#
+# English language translation
+#
+# Hints:
+#    escape single quotes and leading spaces with single quote (')
+
+# validation error translations
+
+error.title=Pay a DVLA penalty - Error
+
+error.required.caseNumber=Enter a valid eight digit penalty reference number
+error.invalid.caseNumber=Enter a valid eight digit penalty reference number
+
+error.required.vehicleRegistrationMark=Enter a valid vehicle registration number (number plate)
+error.invalid.vehicleRegistrationMark=Enter a valid vehicle registration number (number plate)
+
+error.required.untaxedVehicleAcknowledge=Confirm that you understand what to do after making this payment
+
+error.required.emailReceiptDecision=Select whether you want to receive an email receipt of the payment or not
+
+error.required.email=Enter a valid email address
+error.invalid.email=Enter a valid email address
+
+error.required.repeatedEmail=Confirm entered email address
+error.invalid.repeatedEmail=Confirm entered email address
+error.mismatch.repeatedEmail=Entered email addresses are not the same
+
+error.required.feedback.content=Enter your feedback
+error.invalid.feedback.content=Entered feedback is too long
+
+error.invalid.feedback.email=Enter a valid email address
+
+error.required.whatNextDecision=Choose an option
+
+# common translations
+
+common.warning=Warning
+common.callChargesLink=Find out about call charges
+
+# translations main.scala.html
+
+application.title=GOV.UK - Pay a DVLA penalty
+application.header=Pay a DVLA penalty
+application.cookieMessage=GOV.UK uses cookies to make the site simpler. <a href="{0}" target="_blank">Find out more about cookies<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+application.skipToMain=Skip to main content
+application.goToGovUK=Go to the GOV.UK homepage
+application.image.logo.alt=GOV.UK crown logo
+
+# footer translations
+
+view.footer.support=Support links
+view.footer.languageLink.text=Cymraeg
+view.footer.cookiesLink=<a href="{0}" target="_blank">Cookies<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+view.footer.termsAndConditionsLink=<a href="{0}" target="_blank">Terms and conditions<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+view.footer.builtBy=Built by <a href="https://www.gov.uk/government/organisations/driver-and-vehicle-licensing-agency" target="_blank">Driver &amp; Vehicle Licensing Agency<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+view.footer.licence.p1=<a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" target="_blank">Open Government Licence<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+view.footer.licence.p2=All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" target="_blank">Open Government Licence v3.0<span class="visuallyhidden"> (link opens in a new tab)</span></a>, except where otherwise stated
+view.footer.crownCopyright=<a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/" target="_blank">&copy; Crown copyright<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+
+# translations for search.scala.html
+
+view.search.title=Pay a DVLA penalty - Enter details
+view.search.header=Enter details
+view.search.fieldset.penaltyReferenceNumber=Penalty reference number
+view.search.fieldset.penaltyReferenceNumber.hint=For example, 12009866
+view.search.fieldset.penaltyReferenceNumber.whereToFind=Where to find the penalty reference number
+view.search.fieldset.vehicleRegistrationNumber=Vehicle registration number (number plate)
+view.search.fieldset.vehicleRegistrationNumber.hint=For example, AB12 CDE
+view.search.fieldset.vehicleRegistrationNumber.whereToFind=Where to find the vehicle registration number
+view.search.whereToFind.intro=Penalty letter
+view.search.whereToFind.image=Image of the letter
+view.search.button.continue=Continue
+
+# translations for penalty.scala.html
+
+view.penalty.title=Pay a DVLA penalty - Penalty details
+view.penalty.header=Penalty details
+view.penalty.vehicleRegistrationNumber.heading=Vehicle registration number:
+view.penalty.calculation.penaltyAmount.heading=Penalty for failing to tax a vehicle:
+view.penalty.calculation.penaltyAmount.hint=This will increase to {0} if it’s not paid by the date mentioned in the letter.
+view.penalty.calculation.taxOwed.heading=Amount of vehicle tax owed:
+view.penalty.calculation.taxOwed.hint=From: {0}<br />To: {1}
+view.penalty.calculation.totalCurrentlyOwed=Total currently owed:
+view.penalty.calculation.totalOwed=Total owed:
+view.penalty.vehicleTaxStatus.warning=This vehicle is still untaxed
+view.penalty.vehicleTaxStatus.taxStartDate=When you purchase tax for this vehicle, it will start from {0}.
+view.penalty.vehicleTaxStatus.recentlyPaid=Recently paid your tax?
+view.penalty.vehicleTaxStatus.recentlyPaid.p1=If you have already paid your tax it can take up to 5 days for the record to be updated. You can use <a href="https://www.gov.uk/check-vehicle-tax" rel="noopener" target="_blank">Check if a vehicle is taxed<span class="visuallyhidden"> (link opens in a new tab)</span></a> for updates.
+view.penalty.fieldset.untaxedVehicleAcknowledged=Confirm that you understand
+view.penalty.fieldset.untaxedVehicleAcknowledged.p1=After making this payment I must tax, SORN or tell DVLA that I no longer have the vehicle, if I have not already done so.
+view.penalty.fieldset.untaxedVehicleAcknowledged.cie.p1=After making this payment I must insure, SORN or tell DVLA that I no longer have the vehicle, if I have not already done so.
+view.penalty.fieldset.untaxedVehicleAcknowledged.tick=I understand
+view.penalty.button.continue=Continue
+view.penalty.button.exit=Exit
+view.penalty.ocs=Out of court settlement (OCS):
+view.penalty.hgvLevy=HGV road user levy:
+view.penalty.penaltyReference=Penalty reference number:
+view.penalty.penaltyFailingToInsure=Penalty for failing to insure a vehicle:
+view.penalty.cie.increased.amount.message=This will increase to {0} if it's not paid by the date mentioned in the letter.
+
+
+
+# translations for receipt.scala.html
+
+view.receipt.title=Pay a DVLA penalty - Do you want an email receipt?
+view.receipt.header=Do you want an email receipt?
+view.receipt.fieldset.emailReceiptDecision.accessibilityHint=Do you want to receive an email receipt?
+view.receipt.fieldset.emailReceiptDecision.yesOption=Yes
+view.receipt.fieldset.emailReceiptDecision.noOption=No
+view.receipt.fieldset.emailAddress.accessibilityHint=Enter email address
+view.receipt.fieldset.emailAddress.p1=This email address will only be used to send the receipt and will not be retained for any other purpose.
+view.receipt.fieldset.emailAddress=Email address
+view.receipt.fieldset.repeatedEmailAddress=Confirm email address
+view.receipt.printOption=There will be an option to print the payment confirmation
+view.receipt.button.continue=Continue to payment
+
+# translations for payment.scala.html
+
+view.payment.title=Pay a DVLA penalty - Enter payment details
+view.payment.header=Enter payment details
+view.payment.paymentMethod.heading=Pay by credit or debit card
+view.payment.paymentMethod.p1=You can pay using UK Maestro, Visa debit and credit, Mastercard debit </br> and credit or Visa Electron cards.
+view.payment.frameNotSupportedInfo=Your browser does not support this form of payment.
+view.payment.paymentInfo.p1=Card information is transferred in accordance with our security statement and is held in accordance with our privacy statement. Please see our </br> terms and conditions below for further information.
+view.payment.paymentInfo.p2=If the payment options have not displayed return to penalty summary
+
+# translations for confirmation.scala.html
+
+view.confirmation.title=Pay a DVLA penalty - Penalty payment received
+view.confirmation.paymentStatus.heading=Penalty payment received
+view.confirmation.vehicleTaxStatus.heading=The tax is now owed from {0}
+view.confirmation.vehicleTaxStatus.recentlyPaid=Recently paid your tax
+view.confirmation.vehicleTaxStatus.recentlyPaid.p1=If you have recently paid your tax it can take up to 5 days for the record to be updated. You can use <a href="https://www.gov.uk/check-vehicle-tax" rel="noopener" target="_blank">check if a vehicle is taxed<span class="visuallyhidden"> (link opens in a new tab)</span></a> for updates.
+view.confirmation.whatNext.heading=You must now do one of the following
+view.confirmation.whatNext.p1=Click on one of the links below to go to the service you need (links open in a new tab):
+view.confirmation.whatNext.newTab=(link opens in a new tab)
+view.confirmation.whatNext.taxVehicle=Tax the vehicle
+view.confirmation.whatNext.taxVehicle.link=https://www.gov.uk/vehicle-tax
+view.confirmation.whatNext.taxVehicle.hint=if you use it on public roads
+view.confirmation.whatNext.sornVehicle=Declare that the vehicle is off the road (SORN)
+view.confirmation.whatNext.sornVehicle.link=https://www.gov.uk/make-a-sorn
+view.confirmation.whatNext.sornVehicle.hint=if you do not use or keep your vehicle on a public road
+view.confirmation.whatNext.soldVehicle=Tell DVLA you’ve sold or transferred the vehicle
+view.confirmation.whatNext.soldVehicle.hint=so DVLA can update the record
+view.confirmation.summary.heading=Summary
+view.confirmation.untaxed.heading=We''ve received your payment <br /> but the vehicle is still untaxed
+view.confirmation.taxed.acknowledge=This vehicle has been taxed.
+view.confirmation.whatNext.Or=or
+
+view.confirmation.summary.emailAddress.heading=Email address:
+view.confirmation.summary.penaltyReferenceNumber.heading=Penalty reference number:
+view.confirmation.summary.vehicleRegistrationNumber.heading=Vehicle registration number:
+view.confirmation.summary.paymentReference.heading=Payment reference:
+view.confirmation.summary.datePaid.heading=Date paid:
+view.confirmation.summary.totalAmountPaid.heading=Total amount paid:
+
+view.confirmation.printPage=<a href="#" class="print-dialog-trigger" tabindex="4">Print this page</a>
+view.confirmation.printPage.full=You can <a href="#" class="print-dialog-trigger" tabindex="4">print this page</a> for your records.
+view.confirmation.button.finish=Continue
+view.confirmation.link.service=Pay another DVLA penalty
+view.confirmation.button.feedback=Leave feedback
+
+# transactions for thanks.scala.html
+
+view.thanks.title=Pay a DVLA penalty - Thank you
+view.thanks.header=Thank you
+view.thanks.message=You have advised DVLA that your vehicle has recently been taxed. It can take up to 5 days for the record to be updated. You can use <a href="https://www.gov.uk/check-vehicle-tax" target="_blank">Check if a vehicle<span class="visuallyhidden"> (link opens in a new tab)</span></a> is taxed for updates.
+view.thanks.button.exit=Return to GOV.UK
+
+#transactions for evllink.scala.html
+
+view.evllink.title=Pay a DVLA penalty - Loading
+view.evllink.loading.heading=Loading...
+view.evllink.loading.p1=Your internet settings are preventing us from automatically loading the next steps. To proceed, please use the continue button below.
+view.evllink.button=Continue
+view.evllink.whyLink=Why am I seeing this page?
+view.evllink.whyReason=This page uses JavaScript to automatically load the pages you selected. This is currently disabled in your web browser.
+
+# transactions for feedback.scala.html
+
+view.feedback.title=Pay a DVLA penalty - Give Feedback
+view.feedback.header=Give Feedback
+view.feedback.instruction.p1=Please only leave feedback based on your experience of using this service.
+view.feedback.instruction.p2=Don’t include any personal or financial information.
+view.feedback.fieldset.message=What went wrong, if anything? What went well? How could we improve this service?
+view.feedback.fieldset.message.remainingCharactersSuffix=' characters remaining
+view.feedback.contactDetails=Please leave your name and email address in case we need to contact you.
+view.feedback.fieldset.name=Name (optional)
+view.feedback.fieldset.email=Email (optional)
+view.feedback.button.submit=Submit feedback
+view.feedback.button.finish=Return to GOV.UK
+
+# translations for feedbackSubmitted.scala.html
+
+view.feedbackSubmitted.title=Pay a DVLA penalty - Thank you
+view.feedbackSubmitted.header=Thank you
+view.feedbackSubmitted.p1=Your feedback has been submitted.
+
+# translations for feedbackNotSubmitted.scala.html
+
+view.feedbackNotSubmitted.header=An error has occurred
+view.feedbackNotSubmitted.p1=Unfortunately your feedback has not been submitted.
+view.feedbackNotSubmitted.button.exit=Return to GOV.UK
+
+# translations for caseNotFound.scala.html
+
+view.caseNotFound.header=Penalty reference number </br> can’t be found
+view.caseNotFound.p1=You may have entered the penalty reference number incorrectly.
+view.caseNotFound.p2=Please check your letter and try again.
+view.caseNotFound.button.tryAgain=Try again
+
+# translations for vehicleRegistrationMarkMismatch.scala.html
+
+view.vehicleRegistrationMarkMismatch.header=Vehicle registration </br> number mismatch
+view.vehicleRegistrationMarkMismatch.p1=The vehicle registration number you have supplied does not match our records for this case.
+view.vehicleRegistrationMarkMismatch.button.tryAgain=Try again
+
+
+# translations for prosecution.scala.html
+
+view.prosecution.header=The out of court settlement (OCS) </br>can’t be paid online
+view.prosecution.header.cie=This penalty can’t be paid online
+view.prosecution.p1=The OCS offer for this offence has expired and the case is proceeding to court. You will be sent a letter which includes details of the hearing, the charge and the facts.
+view.prosecution.p1.cie=The penalty offer for this offence has expired and the case is proceeding to court. You will be sent a letter which includes details of the hearing, the charge and the facts.
+view.prosecution.p1.cie.invalid=This case is proceeding to court. You will be sent a letter which includes details of the hearing, the charge and the facts.
+view.prosecution.subHeader=What to do next
+view.prosecution.p2=You must reply to the court by post within the time stated on the letter with your plea.
+view.prosecution.warning=If you don’t respond, the case will still go ahead in your absence.
+view.prosecution.button.exit=Return to GOV.UK
+
+# translations for paymentAlreadyMade.scala.hmtl
+
+view.paymentAlreadyMade.header=This penalty has been paid
+view.paymentAlreadyMade.subHeader=No further action is required.
+view.paymentAlreadyMade.printPage=You can <a href="#" class="print-dialog-trigger" tabindex="4">print this page</a> for your records.
+view.paymentAlreadyMade.button.finish=Return to GOV.UK
+
+# translations for noPaymentRequired.scala.html
+
+view.noPaymentRequired.header=This penalty doesn’t </br> need to be paid
+view.noPaymentRequired.subHeader=No further action is required.
+view.noPaymentRequired.printPage=You can <a href="#" class="print-dialog-trigger">print this page</a> for your records.
+view.noPaymentRequired.button.exit=Return to GOV.UK
+
+# translations for caseWithDebtCollectors.scala.html
+
+view.caseWithDebtCollectors.header=This penalty can’t be paid online
+view.caseWithDebtCollectors.subHeader=This penalty is with a debt recovery agency. They will contact you to discuss payment, or you can pay DVLA directly by telephone or post.
+view.caseWithDebtCollectors.notice=If you pay DVLA directly the debt recovery agency will be notified that this penalty has been paid. This can take up to 2 working days.
+view.caseWithDebtCollectors.howToPay.p1=A debt recovery agency will contact you to discuss payment, or you can pay the DVLA directly by telephone or post.
+view.caseWithDebtCollectors.otherWaysToPay.heading=Other ways to pay
+view.caseWithDebtCollectors.button.exit=Return to GOV.UK
+
+# translations for cannotPayOnline.scala.html
+
+view.cannotPayOnline.header=This penalty can’t be paid online
+view.cannotPayOnline.otherWaysToPay.heading=Other ways to pay
+view.cannotPayOnline.button.exit=Return to GOV.UK
+
+# translations for paymentNotAuthorised.scala.html
+
+view.paymentNotAuthorised.header=Payment cancelled or </br> not authorised
+view.paymentNotAuthorised.p1=Payment using this card has not been authorised by the card issuer and no money has been taken.
+view.paymentNotAuthorised.p2=You may have entered the card details incorrectly. If you would like to re-enter the card details or pay with a different card please try again.
+view.paymentNotAuthorised.p3=If you continue to receive this error contact the card issuer for advice.
+view.paymentNotAuthorised.button.tryAgain=Try again
+
+# translations for paymentError.scala.html
+
+view.paymentError.header=We were unable to </br>  process this payment
+view.paymentError.p1=There was a problem connecting to our payment provider.
+view.paymentError.p2=No money was taken from your account.
+view.paymentError.button.tryAgain=Try again
+
+# translations for penaltyDetailsLocked.scala.html
+
+view.penaltyDetailsLocked.header=Penalty details locked
+view.penaltyDetailsLocked.recordLocked.p1=You have incorrectly entered your penalty details multiple times. The system has now locked these details for {0} minutes.
+view.penaltyDetailsLocked.recordLocked.p2=Locked at {0}
+view.penaltyDetailsLocked.time=on
+view.penaltyDetailsLocked.helpContact=For help using this service please call 0300 123 1350 (enter code 336 when prompted)
+view.penaltyDetailsLocked.alternativePayment=If you’re sure that the details you entered are correct, please try a different form of payment:
+view.penaltyDetailsLocked.otherWaysToPay=Others ways to pay
+view.penaltyDetailsLocked.button.exit=Return to GOV.UK
+
+# translations for pageNotFound.scala.html
+
+view.pageNotFound.header=This page can’t be be found
+view.pageNotFound.p1=We are unable to find the page you have requested, this event has been logged for investigation.
+view.pageNotFound.tryAgain=Pay a DVLA penalty
+view.pageNotFound.button.exit=Return to GOV.UK
+
+# translations for serviceUnavailable.scala.html
+
+view.serviceUnavailable.header=Sorry, this service is </br> currently unavailable
+view.serviceUnavailable.p1=To keep this service secure, none of the information you have entered has been saved.
+view.serviceUnavailable.p2=Try again later.
+view.serviceUnavailable.button.tryAgain=Try again
+
+# translations for termsAndConditions.scala.html
+
+view.termsAndConditions.title=Pay a DVLA penalty - Terms and conditions
+view.termsAndConditions.exitPage=Exit this page and return to the service
+view.termsAndConditions.header=Terms and conditions
+view.termsAndConditions.description=These terms and conditions govern your use of DVLA’s Vehicle Penalty Payment website and your relationship with this website. Please read them carefully as they affect your rights and liabilities under the law. If you do not agree to these Terms and Conditions, please do not use this website.
+view.termsAndConditions.useOfWebsite.heading=Use of this website
+view.termsAndConditions.useOfWebsite.p1=DVLA takes every effort to ensure that the information published on this website is accurate. However, DVLA cannot accept any liability for the accuracy or content. Visitors who rely on this information do so at their own risk.
+view.termsAndConditions.useOfWebsite.p2=We cannot guarantee that the service will be fault free. If a fault occurs, you should report on 0300 790 6808 and we will attempt to correct the fault as soon as we reasonably can.
+view.termsAndConditions.hyperlinking.heading=Hyperlinking
+view.termsAndConditions.hyperlinking.p1=It is our policy to obtain permission to link to other websites. DVLA is not responsible for the content or reliability of the linked websites and does not necessarily endorse the views expressed within them. Listings should not be taken as endorsement of any kind. We cannot guarantee that these links will work all of the time and we have no control over the availability of linked pages.
+view.termsAndConditions.virusProtection.heading=Virus protection
+view.termsAndConditions.virusProtection.p1=DVLA makes every effort to check and test material at all stages of production. It is always wise for users to run an anti-virus program on all material downloaded from the web.
+view.termsAndConditions.virusProtection.p2=DVLA will not accept any responsibility for any loss, disruption or damage to your data or your computer system which may occur whilst using material from this website.
+view.termsAndConditions.paymentCards.heading=Payment cards
+view.termsAndConditions.paymentCards.p1=Debit and credit cards are accepted for payment on this website. Card information is transferred in accordance with our security statement and is held in accordance with our privacy statement.
+view.termsAndConditions.applicableLaw.heading=Applicable law
+view.termsAndConditions.applicableLaw.p1=These Terms and Conditions shall be governed by and construed in accordance with the laws of England and Wales and any disputes will be decided only by the English courts.
+view.termsAndConditions.amendments.heading=Amendments to Terms and Conditions
+view.termsAndConditions.amendments.p1=We may update these Terms and Conditions from time to time. If you continue to use this website after the date on which changes come into effect, your use of the website indicates your agreement to be bound by the new Terms and Conditions.
+view.termsAndConditions.securityAndPrivacy.heading=Security and privacy statement
+view.termsAndConditions.securityAndPrivacy.security.heading=Security
+view.termsAndConditions.securityAndPrivacy.security.p1=We take security very seriously. The website is configured to transfer data using the Secure Sockets Layer (SSL), one of the strongest security systems to protect your communications with us. Whenever you enter your debit card details, it is automatically protected using the SSL with 128 bit encryption.
+view.termsAndConditions.securityAndPrivacy.security.p2=SSL works in the following ways:
+view.termsAndConditions.securityAndPrivacy.security.l1=It prevents impersonation - you can tell that you are using a genuine SSL website by the padlock symbol on the bottom of the screen.
+view.termsAndConditions.securityAndPrivacy.security.l2=It encrypts data - as soon as your computer has recognised our computer they encrypt all information that is passed between them. Data encryption means that no-one else can read or change your information as it travels over the Internet.
+view.termsAndConditions.securityAndPrivacy.security.l3=It prevents scrambling - SSL uses a Message Authentication Code (MAC) to prevent anyone tampering with our website. Your computer will always check this code before it takes a message from us. This means that if anyone tries to interfere with a message, your computer would not recognise the code and would alert you.
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.heading=Penalty payment online privacy statement
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p1=The information we collect about you depends on the online services that you request. We will use the information you supply us with to progress any driver and vehicle licensing business. We may check the information you provide us with to see how it compares with information already held by us (for example, we may ask you for your penalty reference number and vehicle registration number so that we can locate your record).
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p2=We can also get information about you from certain third parties, or give information to them to check accuracy of information. We use the information for:
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l1=driver and vehicle licensing purposes
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l2=related law enforcement
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l3=road safety
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l4=assistance to the police in the prevention of crime
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.l5=improving our service
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p3=We will not disclose information about you to anyone outside DVLA unless the law permits us or unless you have given us your explicit consent.
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.p4=Our website does not enable our visitors to communicate with other visitors or for them to post information to be accessed by others. DVLA is the Data Controller for the purpose of the Data Protection Act. You can use this website to view the information that we hold about you.
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.informationCollected.heading=What information do we collect?
+view.termsAndConditions.securityAndPrivacy.penaltyPrivacy.informationCollected.p1=We collect two kinds of information from visitors to this website: feedback (through visitors completing feedback questionnaires or emailing us) and site usage information, from a cookie and page tagging.
+view.termsAndConditions.securityAndPrivacy.dataProtection.heading=Data Protection Act 1998
+view.termsAndConditions.securityAndPrivacy.dataProtection.p1=This Act requires that we inform you that our confirmation by e-mail may include information about you that will be sent over the open internet (this is called ‘personal data’ in the Act) and that we are a ‘data controller’ for the purposes of the Act.
+view.termsAndConditions.securityAndPrivacy.dataProtection.p2=We will process any feedback you give us about this website. We will only use this information to improve this website.
+view.termsAndConditions.securityAndPrivacy.dataProtection.p3=We may disclose any data obtained to any person or organisation for the purposes for which it was collected or where the Act allows disclosure. As a data subject, you have the right to ask for a copy of the data and to ask for any inaccuracies to be corrected.
+view.termsAndConditions.securityAndPrivacy.siteUsage.heading=Site usage information
+view.termsAndConditions.securityAndPrivacy.siteUsage.p1=Log files allow us to record visitors’ use of this website, which we use to make improvements to the layout of the website and to the information on it, based on the way that visitors navigate around it. Log files do not contain any personal information about you.
+view.termsAndConditions.securityAndPrivacy.amendments.heading=Amendments to the security and privacy statement
+view.termsAndConditions.securityAndPrivacy.amendments.p1=If this security and privacy statement changes in any way, we will place an updated version on this page. By reviewing this page it ensures you are always aware of what information we collect, how we use it and under what circumstances, if any, we will share it with other parties.
+view.termsAndConditions.securityAndPrivacy.cookiesPolicy.heading=Penalty payment online cookies policy
+view.termsAndConditions.securityAndPrivacy.cookiesPolicy.p1=When we provide services, we want to make them easy, useful and reliable. Where services are delivered on the Internet, this sometimes involves placing small amounts of information on your device, for example, computer or mobile phone. These include small files known as cookies. They cannot be used to identify you personally.
+view.termsAndConditions.securityAndPrivacy.cookiesPolicy.p2=These pieces of information are used to improve services for you through, for example:
+view.termsAndConditions.securityAndPrivacy.cookiesPolicy.l1=enabling a service to recognise your device so you don’t have to give the same information several times during one task.
+view.termsAndConditions.securityAndPrivacy.cookiesPolicy.l2=recognising that you may already have given a username and password so you don’t need to do it for every web page requested.
+view.termsAndConditions.securityAndPrivacy.cookiesPolicy.l3=measuring how many people are using services, so they can be made easier to use and there’s enough capacity to ensure they are fast.
+view.termsAndConditions.securityAndPrivacy.useOfCookies.heading=Our use of cookies
+view.termsAndConditions.securityAndPrivacy.useOfCookies.p1=Currently the only cookie on our Pay a Vehicle Penalty Service is a ‘session cookie’ which are temporary cookie files and are erased when you close your browser.
+view.termsAndConditions.securityAndPrivacy.useOfCookies.p2=Type of cookie: Session
+view.termsAndConditions.securityAndPrivacy.useOfCookies.p3=Benefit: Once you have logged on with the penalty reference number and vehicle registration number from your penalty notice, you won’t have to do it for every web page you request from our service.
+view.termsAndConditions.securityAndPrivacy.useOfCookies.p4=When you restart your browser and go back to the site that created the cookie, the website will not recognise you. You will have to log back in. A new session cookie will be generated, which will store your browsing information and will be active until you leave the site and close your browser.
+view.termsAndConditions.lastUpdate=Last updated: 17 March 2016
+
+# translations for cookies.scala.html
+
+view.cookies.title=Pay a DVLA penalty - Cookies
+view.cookies.exitPage=Exit this page and return to the service
+view.cookies.header=Cookies
+view.cookies.intro.p1=This service puts small files (known as ‘cookies’) onto your computer to collect information about how you browse the site.
+view.cookies.intro.p2=Cookies are used to:
+view.cookies.intro.l1=measure how you use the website so it can be updated and improved based on your needs
+view.cookies.intro.l2=remember the notifications you’ve seen so that we don’t show them to you again
+view.cookies.intro.p3=Cookies aren’t used to identify you personally.
+view.cookies.intro.p4=You’ll normally see a message on the site before we store a cookie on your computer.
+view.cookies.intro.p5=Find out more about <a rel="noopener" target="_blank" href="http://www.aboutcookies.org/">how to manage cookies.<span class="visuallyhidden"> (link opens in a new tab)</span></a>
+view.cookies.howCookiesUsed.heading=How cookies are used
+view.cookies.table.headerName=Name
+view.cookies.table.headerPurpose=Purpose
+view.cookies.table.headerExpires=Expires
+view.cookies.webUsage=Measuring website usage (Google Analytics and IBM Digital Analytics)
+view.cookies.webUsage.p1=We use Google Analytics software and IBM Digital Analytics to collect information about how you use this service. We do this to help make sure the site is meeting the needs of its users and to help us make improvements, eg <a rel="noopener" target="_blank" href="https://insidegovuk.blog.gov.uk/2015/03/26/new-tool-to-see-trending-searches/">improving site search<span class="visuallyhidden"> (link opens in a new tab)</span></a>.
+view.cookies.webUsage.p2=Google Analytics and IBM Digital Analytics stores information about:
+view.cookies.webUsage.l1=the pages you visit
+view.cookies.webUsage.l2=how long you spend on each
+view.cookies.webUsage.l3=how you got to the site
+view.cookies.webUsage.l4=what you click on while you’re visiting the site
+view.cookies.webUsage.p3=We don’t collect or store your personal information (eg your name or address) so this information can’t be used to identify who you are.
+view.cookies.webUsage.p4=We don’t allow Google or IBM to use or share our analytics data.
+view.cookies.webUsage.p5=Google Analytics and IBM Digital Analytics set the following cookies:
+view.cookies.webUsage.universalAnalytics.heading=Universal Analytics
+view.cookies.webUsage.universalAnalytics.table.r1.name=_ga
+view.cookies.webUsage.universalAnalytics.table.r1.purpose=This helps us count how many people visit this site by tracking if you’ve visited before
+view.cookies.webUsage.universalAnalytics.table.r1.expires=2 years
+view.cookies.webUsage.universalAnalytics.table.r2.name=_gat
+view.cookies.webUsage.universalAnalytics.table.r2.purpose=Used to manage the rate at which page view requests are made
+view.cookies.webUsage.universalAnalytics.table.r2.expires=10 minutes
+view.cookies.webUsage.googleAnalytics.heading=Google Analytics
+view.cookies.webUsage.googleAnalytics.table.r1.name=_utma
+view.cookies.webUsage.googleAnalytics.table.r1.purpose=Like _ga, this lets us know if you’ve visited before, so we can count how many of our visitors are new to this site or to a certain page
+view.cookies.webUsage.googleAnalytics.table.r1.expires=2 years
+view.cookies.webUsage.googleAnalytics.table.r2.name=_utmb
+view.cookies.webUsage.googleAnalytics.table.r2.purpose=This works with _utmc to calculate the average length of time you spend on this site
+view.cookies.webUsage.googleAnalytics.table.r2.expires=30 minutes
+view.cookies.webUsage.googleAnalytics.table.r3.name=_utmc
+view.cookies.webUsage.googleAnalytics.table.r3.purpose=This works with _utmb to calculate when you close your browser
+view.cookies.webUsage.googleAnalytics.table.r3.expires=when you close your browser
+view.cookies.webUsage.googleAnalytics.table.r4.name=_utmz
+view.cookies.webUsage.googleAnalytics.table.r4.purpose=This tells us how you reached this site (eg from another website or a search engine)
+view.cookies.webUsage.googleAnalytics.table.r4.expires=6 months
+view.cookies.webUsage.ibmAnalytics.heading=IBM Digital Analytics
+view.cookies.webUsage.ibmAnalytics.table.r1.name=cmTPset
+view.cookies.webUsage.ibmAnalytics.table.r1.purpose=This collects technical information for things like the type of browser used, its version and screen width
+view.cookies.webUsage.ibmAnalytics.table.r1.expires=30 minutes
+view.cookies.webUsage.ibmAnalytics.table.r2.name=99999999_clogin
+view.cookies.webUsage.ibmAnalytics.table.r2.purpose=This collects session data and tracks repeat sessions
+view.cookies.webUsage.ibmAnalytics.table.r2.expires=30 minutes
+view.cookies.webUsage.ibmAnalytics.table.r3.name=CoreID6
+view.cookies.webUsage.ibmAnalytics.table.r3.purpose=Like _ga, this lets us know if you’ve visited before, so we can count how many of our visitors are new to this site or to a certain page
+view.cookies.webUsage.ibmAnalytics.table.r3.expires=15 years
+view.cookies.webUsage.govUK.heading=GOV.UK events
+view.cookies.webUsage.govUK.table.r1.name=analytics_next_page_call
+view.cookies.webUsage.govUK.table.r1.purpose=This lets us know the next page you visit on this site, so we can make journeys better
+view.cookies.webUsage.govUK.table.r1.expires=when you close your browser
+view.cookies.webUsage.optOutGoogleAnalytics=You can <a rel="noopener" target="_blank" href="https://tools.google.com/dlpage/gaoptout">opt out of Google Analytics cookies<span class="visuallyhidden"> (link opens in a new tab)</span></a>.
+view.cookies.webUsage.ibmDigitalAnalytics=You can <a href="{0}" target="_blank">opt out of IBM Digital Analytics cookies<s<span class="visuallyhidden"> (link opens in a new tab)</span></a>.
+view.cookies.introductoryMessage.heading=Our introductory message
+view.cookies.introductoryMessage.p1=You may see a pop-up welcome message when you first visit this service. We’ll store a cookie so that your computer knows you’ve seen it and knows not to show it again.
+view.cookies.introductoryMessage.r1.name=seen_cookie_message
+view.cookies.introductoryMessage.r1.purpose=Saves a message to let us know that you’ve seen our cookie message
+view.cookies.introductoryMessage.r1.expires=28 days
+view.cookies.session.heading=Session cookies
+view.cookies.session.p1=We store session cookies on your computer to help keep your information secure while you use the service.
+view.cookies.session.table.r1.name=PLAY_SESSION
+view.cookies.session.table.r1.purpose=Remembers form information you’ve entered while using this service
+view.cookies.session.table.r1.expires=1 hour
+view.cookies.session.table.r2.name=PLAY_TOKEN
+view.cookies.session.table.r2.purpose=Helps to secure this service
+view.cookies.session.table.r2.expires=when you close your browser
+view.cookies.languageSelection.heading=Language selection
+view.cookies.languageSelection.p1=We log a cookie to remember the language you selected so you don’t need to change it next time you visit.
+view.cookies.languageSelection.table.r1.name=PLAY_LANG
+view.cookies.languageSelection.table.r1.purpose=Set to remember your language preference
+view.cookies.languageSelection.table.r1.expires=1 year
+view.cookies.lastUpdated=Last updated: 30 March 2017
+
+# translations for ibmDigitalAnalytics.scala.html
+
+view.ibmDigitalAnalytics.title=Pay a DVLA penalty - IBM Digital Analytics policy
+view.ibmDigitalAnalytics.exitPage=Exit this page and return to the service
+view.ibmDigitalAnalytics.header=IBM Digital Analytics policy
+view.ibmDigitalAnalytics.description=IBM allows you to view or change the way they collect data about your user experience on this site. There are three different levels of data collection.
+view.ibmDigitalAnalytics.statisticsSettings.header=Your current level
+view.ibmDigitalAnalytics.instructions=To update the level of data that is collected about you. Select one of the following options:
+view.ibmDigitalAnalytics.statisticsSettings.description=Our IBM Digital Analytics site usage statistics system allows you to view or change your profile. There are 3 different levels of data collection:
+view.ibmDigitalAnalytics.individualAnonymous=Use a cookie on my device to collect data about my experience. This data may be used to produce a report on my visit.
+view.ibmDigitalAnalytics.groupAnonymous=Use a cookie on my device to collect data about my experience. This data may only be used to produce a report on a group of anonymous visitors.
+view.ibmDigitalAnalytics.optOut=Do not collect data about my experience.
+view.ibmDigitalAnalytics.button.continue=Continue
+
+
+# translations for phaseBanner.scala.html
+
+fragment.phaseBanner.beta=BETA
+fragment.phaseBanner.feedbackRequest=This is a new service – your <a href="{0}" target="_blank">feedback<span class="visuallyhidden"> (link opens in a new tab)</span></a> will help us to improve it.
+
+# translations for backLink.scala.html
+
+fragment.backLink=<a href="{0}" class="link-back">Back<span class="visuallyhidden"> to the previous page</span></a>
+
+# translations for errorSummary.scala.html
+
+fragment.errorSummary.header=There was a problem submitting the form
+fragment.errorSummary.youmust=You must:
+
+# translations for offenceCriteriaTable.scala.html
+
+fragment.offenceCriteriaTable.caseNumber.heading=Penalty reference number:
+fragment.offenceCriteriaTable.vehicleRegistrationNumber.heading=Vehicle registration number:
+fragment.offenceCriteriaTable.paymentReference.heading=Payment reference number:
+
+# translations for otherWaysToPay.scala.html
+
+fragment.otherWaysToPay.telephone.heading=Pay by telephone
+fragment.otherWaysToPay.telephone.numbers=0300 790 6808
+fragment.otherWaysToPay.telephone.openingTimes=Monday to Friday, 9am to 5pm
+fragment.otherWaysToPay.post.heading=Pay by post
+fragment.otherWaysToPay.post.intro=Send a cheque or postal order payable to DVLA. Write the vehicle registration number on the back of any payment and return it to:
+fragment.otherWaysToPay.post.agencyName=<abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr> Enforcement Centre
+fragment.otherWaysToPay.post.agencyTown=Swansea
+
+# translations for email/receipt.scala.html
+
+email.receipt.title=Pay a DVLA penalty
+email.receipt.header.agencyName=Driver &amp; Vehicle Licensing Agency
+email.receipt.paymentReceipt.heading=This is your DVLA penalty payment receipt
+email.receipt.paymentStatus.heading=Penalty payment received
+email.receipt.vehicleTaxStatus.heading=The tax is now owed from {0}
+email.receipt.vehicleTaxStatus.recentlyPaid=Recently paid your tax?
+email.receipt.vehicleTaxStatus.recentlyPaid.p1=If you have already paid your tax it can take up to 5 days for the record to be updated. You can use <a style="color: #FFFFFF" href="https://www.gov.uk/check-vehicle-tax" rel="noopener" target="_blank">Check if a vehicle is taxed</a> for updates.
+email.receipt.whatNext.heading=You must now do one of the following
+email.receipt.whatNext.p1=Click on one of the links below to go to the service you need (links open in a new tab):
+email.receipt.whatNext.taxVehicle=<a style="font-weight: bold; color: #005EA5;" href="https://www.gov.uk/vehicle-tax" rel="noopener" target="_blank">Tax the vehicle</a><br/>if you use it on public roads
+email.receipt.whatNext.sornVehicle=<a style="font-weight: bold; color: #005EA5;" href="https://www.gov.uk/make-a-sorn" rel="noopener" target="_blank">Make a SORN (Statutory Off Road Notification)</a><br/>if you do not use or keep your vehicle on a public road
+email.receipt.whatNext.soldVehicle=<a style="font-weight: bold; color: #005EA5;" href="https://www.gov.uk/sold-bought-vehicle" rel="noopener" target="_blank">Tell DVLA you’ve sold the vehicle</a><br/>so DVLA can update the record
+email.receipt.summary.penaltyReferenceNumber.heading=Penalty reference number:
+email.receipt.summary.vehicleRegistrationNumber.heading=Vehicle registration number:
+email.receipt.summary.emailAddress.heading=Email address:
+email.receipt.summary.paymentReference.heading=Payment reference:
+email.receipt.summary.datePaid.heading=Date paid:
+email.receipt.summary.totalAmountPaid.heading=Total amount paid:
+email.receipt.print=You can print this email receipt for your records.
+email.receipt.feedback.p1=We’re constantly working to improve this service
+email.receipt.feedback.p2=Please give <a href="mailto:{0}" style="color: #005EA5;">feedback</a> so we can make it better.
+email.receipt.footer.unsure.p1=If you’re unsure an email is from DVLA:
+email.receipt.footer.unsure.l1=do not reply to it or click any links
+email.receipt.footer.unsure.l2=forward it to <a href="mailto:{0}" style="color: #005EA5;">{0}</a>
+email.receipt.footer.agencyName=<abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr> Enforcement Centre<br/>
+email.receipt.footer.agencyTown=Swansea
+email.receipt.subject=DVLA Receipt for Payment {0}
+
+# translations for feedback e-mail
+
+email.feedback.subject=Feedback on Failure to Tax Vehicle Penalty Service

@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "caseNumber": "55555555",
+    "vehicleRegistrationMark": "CV05AAA"
+  },
+  "caseRejection": {
+    "rejectionReason": "PASSED_TO_DEBT_COLLECTORS",
+    "caseClosureDate": "2015-07-30T23:00:00.000Z"
+  },
+  "vehicleData": {
+    "taxed": true
+  }
+}

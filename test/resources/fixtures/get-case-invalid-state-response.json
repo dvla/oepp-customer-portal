@@ -1,0 +1,12 @@
+{
+  "criteria": {
+    "caseNumber": "22222222",
+    "vehicleRegistrationMark": "CV02AAA"
+  },
+  "caseRejection": {
+    "rejectionReason": "INVALID_STATE"
+  },
+  "vehicleData": {
+    "taxed": true
+  }
+}

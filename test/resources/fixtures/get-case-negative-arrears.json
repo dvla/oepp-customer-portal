@@ -1,0 +1,7 @@
+{
+  "status": 404,
+  "error": {
+    "code": "OE-404-08",
+    "message": "Cannot be payed online because you overpaid arrears"
+  }
+}
